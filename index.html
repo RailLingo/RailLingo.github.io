@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="c94c7eba-b107-40e3-9223-aa23cbaf3603"></script>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -74,9 +73,19 @@ body {
 .mode-card > * + * { margin-left: 14px; }
 .mode-card:active { background: var(--card2); }
 .mode-icon { font-size: 30px; min-width: 38px; text-align: center; }
+.mode-body { min-width: 0; -webkit-box-flex: 1; -ms-flex: 1; flex: 1; }
+.mode-top-row {
+  display: -webkit-box; display: -ms-flexbox; display: flex;
+  -webkit-box-align: center; -ms-flex-align: center; align-items: center;
+  -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between;
+}
 .mode-name { font-size: 16px; font-weight: 700; }
 .mode-desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
-.mode-badge { background: var(--blue); color: #fff; border-radius: 8px; font-size: 11px; font-weight: 700; padding: 3px 8px; white-space: nowrap; }
+.mode-badge {
+  background: var(--blue); color: #fff; border-radius: 8px; font-size: 11px; font-weight: 700;
+  padding: 3px 8px; white-space: nowrap; margin-left: 10px;
+  -webkit-flex-shrink: 0; flex-shrink: 0;
+}
 
 /* ── FOOTER ── */
 .home-footer {
@@ -223,6 +232,112 @@ body {
 }
 .big-btn.sec { background: var(--card); border: 2px solid var(--border); color: var(--text); }
 .big-btn:active { -webkit-transform: scale(0.97); transform: scale(0.97); }
+
+/* ── COMPETITION ZONE ── */
+#comp-header, #cq-header {
+  width: 100%; max-width: 640px; padding: 16px 20px 8px;
+  display: -webkit-box; display: -ms-flexbox; display: flex;
+  -webkit-box-align: center; -ms-flex-align: center; align-items: center;
+}
+.close-btn { background: none; border: none; color: var(--muted); font-size: 24px; cursor: pointer; padding: 4px; }
+.comp-header-title { font-size: 18px; font-weight: 800; margin-left: 8px; -webkit-box-flex:1; -ms-flex:1; flex:1; text-align:center; margin-right:32px; }
+#comp-body { width: 100%; max-width: 640px; padding: 4px 24px 40px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+#comp-login-box { width:100%; background: var(--card); border:2px solid var(--border); border-radius: var(--r); padding: 18px; margin-bottom: 22px; }
+.comp-sub { font-size: 13px; color: var(--muted); line-height:1.5; margin-bottom: 12px; }
+#comp-login-box input {
+  width: 100%; background: var(--card2); border: 2px solid var(--border); border-radius: 12px;
+  color: var(--text); font-size: 16px; font-weight: 600; padding: 12px 14px; outline: none;
+  margin-bottom: 10px; -webkit-appearance:none;
+}
+#comp-login-box input:focus { border-color: var(--blue); }
+.comp-error { color: var(--red); font-size: 13px; font-weight:600; min-height: 18px; margin-bottom: 8px; }
+#comp-leaderboard-wrap { width: 100%; }
+.comp-lb-title { font-size: 17px; font-weight: 800; margin-bottom: 10px; }
+.comp-lb-tabs {
+  display: -webkit-box; display: -ms-flexbox; display: flex;
+  background: var(--card2); border: 2px solid var(--border);
+  border-radius: 50px; padding: 4px; margin-bottom: 14px;
+}
+.comp-lb-tab {
+  -webkit-box-flex: 1; -ms-flex: 1; flex: 1;
+  padding: 9px 6px; border: none; border-radius: 46px;
+  font-size: 12.5px; font-weight: 700; cursor: pointer;
+  -webkit-transition: background .2s, color .2s; transition: background .2s, color .2s;
+  background: transparent; color: var(--muted); text-align: center; line-height: 1.3;
+}
+.comp-lb-tab.active { background: var(--yellow); color: #1a1400; }
+.comp-lb-list { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
+.comp-lb-row {
+  display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items:center;
+  background: var(--card); border:2px solid var(--border);
+  border-radius: 12px; padding: 10px 14px; margin-bottom: 8px;
+}
+.comp-lb-rank { font-weight:800; width: 34px; font-size:15px; }
+.comp-lb-name { -webkit-box-flex:1; -ms-flex:1; flex:1; font-weight:700; font-size:14px; }
+.comp-lb-score { font-weight:800; color: var(--yellow); }
+.comp-lb-you { border-color: var(--blue); }
+.comp-lb-sep { text-align: center; color: var(--muted); font-weight: 800; letter-spacing: 3px; padding: 2px 0 8px; }
+.comp-lb-loading { color: var(--muted); font-size: 13px; text-align:center; padding: 10px 0; }
+
+#cq-prog-wrap { -webkit-box-flex:1; -ms-flex:1; flex:1; height:16px; background: var(--card); border-radius: 8px; overflow:hidden; margin: 0 12px; }
+#cq-prog-bar { height:100%; background: var(--yellow); border-radius:8px; -webkit-transition: width .4s; transition: width .4s; width:0%; }
+#cq-score-display { font-weight:800; color: var(--yellow); font-size:15px; min-width:56px; text-align:right; }
+#cq-speed-hint {
+  width: 100%; max-width: 640px; text-align: center;
+  font-size: 11px; font-weight: 700; color: var(--yellow); opacity: 0.85;
+  padding: 0 20px 6px;
+}
+#cq-body { padding: 12px 20px 40px; -webkit-box-flex:1; -ms-flex:1; flex:1; width:100%; max-width:640px; }
+#cq-type-label { font-size:13px; font-weight:700; color: var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
+#cq-title { font-size: 18px; font-weight: 700; margin-bottom: 12px; line-height: 1.3; }
+#cq-word {
+  font-size: 24px; font-weight:800; background: var(--card); border:2px solid var(--border);
+  border-radius: var(--r); padding: 20px 16px; margin-bottom: 20px; text-align:center;
+  min-height: 76px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items:center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content:center; line-height:1.3;
+}
+#cq-options { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap:wrap; margin:-6px; }
+
+#cq-type-input {
+  width: 100%; background: var(--card); border: 2px solid var(--border); border-radius: var(--r);
+  color: var(--text); font-size: 20px; font-weight: 600; padding: 16px; outline: none;
+  text-align: center; -webkit-appearance: none; caret-color: var(--blue);
+}
+#cq-type-input:focus { border-color: var(--blue); }
+#cq-type-input.correct { border-color: var(--green); background: #1a3a1a; }
+#cq-type-input.wrong   { border-color: var(--red);   background: #3a1a1a; }
+
+#cq-answer-area {
+  min-height: 56px; background: var(--card2); border: 2px dashed var(--border);
+  border-radius: var(--r); padding: 10px 12px;
+  display: -webkit-box; display: -ms-flexbox; display: flex;
+  -ms-flex-wrap: wrap; flex-wrap: wrap; margin-bottom: 12px;
+  -webkit-box-align: center; -ms-flex-align: center; align-items: center;
+}
+#cq-answer-area .tile { margin: 4px; }
+#cq-word-bank { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+#cq-word-bank .tile { margin: 4px; }
+.cq-correct-feedback {
+  margin-top: 14px; padding: 10px 14px; border-radius: 12px;
+  background: rgba(255, 75, 75, 0.12); border: 2px solid var(--red);
+  color: var(--text); font-size: 14px; font-weight: 700; text-align: center; line-height: 1.4;
+}
+.cq-correct-feedback b { color: var(--red); }
+
+#cq-bottom-btn {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
+  padding: 14px 20px 30px;
+  background: -webkit-linear-gradient(top, transparent, var(--bg) 35%);
+  background: linear-gradient(to bottom, transparent, var(--bg) 35%);
+  display: -webkit-box; display: -ms-flexbox; display: flex;
+  -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center;
+}
+#cq-bottom-btn button {
+  width: 100%; max-width: 400px; padding: 15px; border: none; border-radius: var(--r);
+  font-size: 16px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;
+  cursor: pointer; -webkit-transition: transform .1s, opacity .15s; transition: transform .1s, opacity .15s;
+}
+#cq-btn-check { background: var(--green); color: #fff; opacity: 0.4; pointer-events: none; }
+#cq-btn-check.ready { opacity: 1; pointer-events: all; }
 </style>
 </head>
 <body>
@@ -246,35 +361,53 @@ body {
     <div class="mode-grid" style="margin-top:16px;">
       <div class="mode-card" onclick="startGame('mcq')">
         <div class="mode-icon">🎯</div>
-        <div style="-webkit-box-flex:1;-ms-flex:1;flex:1">
-          <div class="mode-name">Meerkeuze</div>
+        <div class="mode-body">
+          <div class="mode-top-row">
+            <div class="mode-name">Meerkeuze</div>
+            <div class="mode-badge">NL → FR</div>
+          </div>
           <div class="mode-desc">Kies de juiste Franse vertaling uit 4 opties</div>
         </div>
-        <div class="mode-badge">NL → FR</div>
       </div>
       <div class="mode-card" onclick="startGame('mcq_rev')">
         <div class="mode-icon">🔄</div>
-        <div style="-webkit-box-flex:1;-ms-flex:1;flex:1">
-          <div class="mode-name">Omgekeerd</div>
+        <div class="mode-body">
+          <div class="mode-top-row">
+            <div class="mode-name">Omgekeerd</div>
+            <div class="mode-badge">FR → NL</div>
+          </div>
           <div class="mode-desc">Kies de juiste Nederlandse vertaling uit 4 opties</div>
         </div>
-        <div class="mode-badge">FR → NL</div>
       </div>
       <div class="mode-card" onclick="startGame('bank')">
         <div class="mode-icon">🧩</div>
-        <div style="-webkit-box-flex:1;-ms-flex:1;flex:1">
-          <div class="mode-name">Woordenbank</div>
+        <div class="mode-body">
+          <div class="mode-top-row">
+            <div class="mode-name">Woordenbank</div>
+            <div class="mode-badge">NL → FR</div>
+          </div>
           <div class="mode-desc">Stel de vertaling samen uit losse woorden</div>
         </div>
-        <div class="mode-badge">NL → FR</div>
       </div>
       <div class="mode-card" onclick="startGame('type')">
         <div class="mode-icon">⌨️</div>
-        <div style="-webkit-box-flex:1;-ms-flex:1;flex:1">
-          <div class="mode-name">Typ het in</div>
+        <div class="mode-body">
+          <div class="mode-top-row">
+            <div class="mode-name">Typ het in</div>
+            <div class="mode-badge">Gevorderd</div>
+          </div>
           <div class="mode-desc">Typ zelf de Franse vertaling in</div>
         </div>
-        <div class="mode-badge">Gevorderd</div>
+      </div>
+      <div class="mode-card" onclick="goCompetition()" style="border-color:var(--yellow);">
+        <div class="mode-icon">🏆</div>
+        <div class="mode-body">
+          <div class="mode-top-row">
+            <div class="mode-name">Competitiezone</div>
+            <div class="mode-badge" style="background:var(--yellow);color:#1a1400;">Optioneel</div>
+          </div>
+          <div class="mode-desc">Speel voor punten en kom in het klassement</div>
+        </div>
       </div>
     </div>
   </div>
@@ -286,35 +419,53 @@ body {
     <div class="mode-grid" style="margin-top:16px;">
       <div class="mode-card" onclick="startGame('mcq')">
         <div class="mode-icon">🎯</div>
-        <div style="-webkit-box-flex:1;-ms-flex:1;flex:1">
-          <div class="mode-name">Choix multiple</div>
+        <div class="mode-body">
+          <div class="mode-top-row">
+            <div class="mode-name">Choix multiple</div>
+            <div class="mode-badge">FR → NL</div>
+          </div>
           <div class="mode-desc">Choisissez la bonne traduction néerlandaise parmi 4 options</div>
         </div>
-        <div class="mode-badge">FR → NL</div>
       </div>
       <div class="mode-card" onclick="startGame('mcq_rev')">
         <div class="mode-icon">🔄</div>
-        <div style="-webkit-box-flex:1;-ms-flex:1;flex:1">
-          <div class="mode-name">Inversé</div>
+        <div class="mode-body">
+          <div class="mode-top-row">
+            <div class="mode-name">Inversé</div>
+            <div class="mode-badge">NL → FR</div>
+          </div>
           <div class="mode-desc">Choisissez la bonne traduction française parmi 4 options</div>
         </div>
-        <div class="mode-badge">NL → FR</div>
       </div>
       <div class="mode-card" onclick="startGame('bank')">
         <div class="mode-icon">🧩</div>
-        <div style="-webkit-box-flex:1;-ms-flex:1;flex:1">
-          <div class="mode-name">Banque de mots</div>
+        <div class="mode-body">
+          <div class="mode-top-row">
+            <div class="mode-name">Banque de mots</div>
+            <div class="mode-badge">FR → NL</div>
+          </div>
           <div class="mode-desc">Composez la traduction avec des mots proposés</div>
         </div>
-        <div class="mode-badge">FR → NL</div>
       </div>
       <div class="mode-card" onclick="startGame('type')">
         <div class="mode-icon">⌨️</div>
-        <div style="-webkit-box-flex:1;-ms-flex:1;flex:1">
-          <div class="mode-name">Tapez la réponse</div>
+        <div class="mode-body">
+          <div class="mode-top-row">
+            <div class="mode-name">Tapez la réponse</div>
+            <div class="mode-badge">Avancé</div>
+          </div>
           <div class="mode-desc">Tapez vous-même la traduction néerlandaise</div>
         </div>
-        <div class="mode-badge">Avancé</div>
+      </div>
+      <div class="mode-card" onclick="goCompetition()" style="border-color:var(--yellow);">
+        <div class="mode-icon">🏆</div>
+        <div class="mode-body">
+          <div class="mode-top-row">
+            <div class="mode-name">Zone de compétition</div>
+            <div class="mode-badge" style="background:var(--yellow);color:#1a1400;">Optionnel</div>
+          </div>
+          <div class="mode-desc">Jouez pour des points et entrez dans le classement</div>
+        </div>
       </div>
     </div>
   </div>
@@ -397,14 +548,89 @@ body {
   </div>
 </div>
 
+<!-- ══ COMPETITION HOME (login + klassement) ══ -->
+<div id="comp-home" class="screen">
+  <div id="comp-header">
+    <button class="close-btn" onclick="goHome()">✕</button>
+    <div class="comp-header-title" id="comp-title">Competitiezone</div>
+  </div>
+  <div id="comp-body">
+    <div id="comp-login-box">
+      <div class="comp-sub" id="comp-login-sub"></div>
+      <input id="comp-nickname" type="text" maxlength="20" autocomplete="off">
+      <input id="comp-pincode" type="password" inputmode="numeric" maxlength="6" autocomplete="off">
+      <div id="comp-error" class="comp-error"></div>
+      <button class="big-btn" id="comp-start-btn" onclick="compStart()">–</button>
+    </div>
+    <div id="comp-leaderboard-wrap">
+      <div class="comp-lb-title" id="comp-lb-title"></div>
+      <div class="comp-lb-tabs">
+        <button class="comp-lb-tab active" data-period="alltime" onclick="compSwitchPeriod('alltime')" id="comp-tab-all">–</button>
+        <button class="comp-lb-tab" data-period="month" onclick="compSwitchPeriod('month')" id="comp-tab-month">–</button>
+        <button class="comp-lb-tab" data-period="week" onclick="compSwitchPeriod('week')" id="comp-tab-week">–</button>
+      </div>
+      <div id="comp-lb-list" class="comp-lb-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ COMPETITION QUIZ ══ -->
+<div id="comp-quiz" class="screen">
+  <div id="cq-header">
+    <button class="close-btn" onclick="compExit()">✕</button>
+    <div id="cq-prog-wrap"><div id="cq-prog-bar"></div></div>
+    <div id="cq-score-display">⭐ 0.0</div>
+  </div>
+  <div id="cq-speed-hint"></div>
+  <div id="cq-body">
+    <div id="cq-type-label"></div>
+    <div id="cq-title"></div>
+    <div id="cq-word"></div>
+    <div id="cq-mcq-wrap" style="display:none"><div id="cq-options"></div></div>
+    <div id="cq-type-wrap" style="display:none">
+      <input id="cq-type-input" type="text"
+        autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+        oninput="cqOnTypeInput()" onkeydown="cqOnTypeKey(event)">
+    </div>
+    <div id="cq-bank-wrap" style="display:none">
+      <div id="cq-answer-area"></div>
+      <div id="cq-word-bank"></div>
+    </div>
+    <div id="cq-correct-feedback" class="cq-correct-feedback" style="display:none"></div>
+  </div>
+</div>
+
+<!-- ══ COMPETITION BOTTOM BUTTON (typ/bank) ══ -->
+<div id="cq-bottom-btn" style="display:none">
+  <button id="cq-btn-check" onclick="cqCheckAnswer()">–</button>
+</div>
+
+<!-- ══ COMPETITION RESULT ══ -->
+<div id="comp-result" class="screen">
+  <div class="end-emoji">🏆</div>
+  <div class="end-title" id="cr-title"></div>
+  <div class="end-sub" id="cr-sub"></div>
+  <div class="stat-grid">
+    <div class="stat-box"><div class="stat-num y" id="cr-score">0</div><div class="stat-lbl" id="cr-score-lbl"></div></div>
+    <div class="stat-box"><div class="stat-num g" id="cr-best">0</div><div class="stat-lbl" id="cr-best-lbl"></div></div>
+  </div>
+  <div class="btn-row" style="padding:0 24px;">
+    <button class="big-btn" id="cr-btn-again" onclick="compPlayAgain()">–</button>
+    <button class="big-btn sec" id="cr-btn-lb" onclick="compShowLeaderboard()">–</button>
+    <button class="big-btn sec" id="cr-btn-home" onclick="goHome()">–</button>
+  </div>
+</div>
+
 <script>
 const WORDS = [{"nl":"Beheerd stopsein","fr":"Signal d’arrêt desservi"},{"nl":"Groot stopsein","fr":"Grand signal d’arrêt"},{"nl":"Klein stopsein","fr":"Petit signal d’arrêt"},{"nl":"Niet-beheerd stopsein","fr":"Signal d’arrêt non-desservi"},{"nl":"Normaalspoorsein","fr":"Signal de voie normale"},{"nl":"Stopsein","fr":"Signal d’arrêt"},{"nl":"Tegenspoorsein","fr":"Signal de contre-voie"},{"nl":"Vereenvoudigd stopsein","fr":"Signal d’arrêt simplifié"},{"nl":"Verwittigingssein","fr":"Signal avertisseur"},{"nl":"Rood","fr":"Rouge"},{"nl":"Groen","fr":"Vert"},{"nl":"2 gele","fr":"2 jaunes"},{"nl":"Groen-geel horizontaal","fr":"Vert-jaune horizontal"},{"nl":"Groen-geel verticaal","fr":"Vert-jaune vertical"},{"nl":"rood en maanwit","fr":"Rouge et blanc"},{"nl":"Rood mobiel sein","fr":"Signal mobile rouge"},{"nl":"Groen mobiel sein","fr":"Signal mobile vert"},{"nl":"Overschrijdingskroon","fr":"Couronne de franchissement"},{"nl":"Overschrijdingslicht","fr":"Oeilleton de franchissement"},{"nl":"Achteraan","fr":"En arrière"},{"nl":"Afwaarts","fr":"En aval"},{"nl":"Bovenaan","fr":"Au-dessus"},{"nl":"Bundel","fr":"Faisceau"},{"nl":"De hinder bevindt zich in het spoor.","fr":"L’obstacle se trouve dans la voie."},{"nl":"Doodspoor","fr":"Voie en impasse"},{"nl":"Eerste rijtuig","fr":"Première voiture"},{"nl":"Eerstvolgende snelheidsaanduiding","fr":"Prochaine indication de vitesse"},{"nl":"Hoofdspoor","fr":"Voie principale"},{"nl":"Huidige","fr":"Actuel"},{"nl":"In het midden","fr":"Au milieu"},{"nl":"Laatste rijtuig","fr":"Dernière voiture"},{"nl":"Langs het spoor","fr":"Le long de la voie"},{"nl":"Links","fr":"Gauche"},{"nl":"Nabij het spoor","fr":"Près de la voie"},{"nl":"Nevenliggende sporen","fr":"Voies adjacentes"},{"nl":"Normaalspoor","fr":"Voie normale"},{"nl":"Onderaan","fr":"En-dessous"},{"nl":"Onregelmatig opwaarts","fr":"Irrégulièrement en amont"},{"nl":"Opdruklocomotief","fr":"Locomotive d’allège en queue"},{"nl":"Opwaarts","fr":"En amont"},{"nl":"Perron","fr":"Quai"},{"nl":"Rechts","fr":"Droite"},{"nl":"Reizigerstrein","fr":"Train de voyageurs"},{"nl":"Sleeplocomotief","fr":"Locomotive de remorque"},{"nl":"Spoor A","fr":"Voie A"},{"nl":"Spoor B","fr":"Voie B"},{"nl":"Tegenspoor","fr":"Contre-voie"},{"nl":"Tussenspoor","fr":"L’entre-voie"},{"nl":"Tweede rijtuig","fr":"Deuxième voiture"},{"nl":"Vertakking","fr":"Bifurcation"},{"nl":"Vooraan","fr":"En tête"},{"nl":"Vooraan","fr":"En avant"},{"nl":"Wijkspoor","fr":"Voie de garage"},{"nl":"Wissel","fr":"Aiguillage"},{"nl":"Achteraan","fr":"En queue"},{"nl":"Kilometerpaal","fr":"Borne kilométrique"},{"nl":"Hectometerpaal","fr":"Borne hectométrique"},{"nl":"Brug","fr":"Pont"},{"nl":"Tunnel","fr":"Tunnel"},{"nl":"Andere onregelmatigheid","fr":"Autre irrégularité"},{"nl":"Bevelnummer","fr":"Numéro d’ordre"},{"nl":"Beweging beperkt tot","fr":"Mouvement limité jusqu’au"},{"nl":"Beweging nummer","fr":"Mouvement numéro"},{"nl":"Bijzondere verkeersvoorwaarden","fr":"Les conditions spéciales de circulation"},{"nl":"De aanduiding","fr":"L’indication"},{"nl":"De beperkte snelheid","fr":"La vitesse réduite"},{"nl":"De bovenleiding is doorgezakt.","fr":"La caténaire est affaissée."},{"nl":"De bovenleidingspalen","fr":"Les poteaux de la caténaire"},{"nl":"De BTS","fr":"L’ART"},{"nl":"De geëlektrificeerde sporen","fr":"Les voies électrifiées"},{"nl":"De hulpdiensten","fr":"Les services de secours"},{"nl":"De hulpdiensten zijn nog aanwezig.","fr":"Les services de secours sont encore présents."},{"nl":"De indringing in het vrijeruimteprofiel.","fr":"L’empiètement dans le gabarit."},{"nl":"De mobiele seinen zijn niet correct geplaatst.","fr":"Les signaux mobiles ne sont pas correctement placés."},{"nl":"De politie is aanwezig.","fr":"La police est présente."},{"nl":"De reisweg","fr":"L’itinéraire du train"},{"nl":"De richtpunten","fr":"Les points de repère"},{"nl":"De slagbomen zijn open (gesloten).","fr":"Les barrières sont ouvertes (fermées)."},{"nl":"De slechte staat van het spoor","fr":"Le mauvais état de la voie"},{"nl":"De sporen zijn versperd.","fr":"Les voies sont obstruées."},{"nl":"De stroomafnemers niet oplaten.","fr":"Ne pas lever les pantographes."},{"nl":"De trein kan (niet) op eigen kracht verderrijden.","fr":"Le train (ne) peut (pas) poursuivre sa marche par ses propres moyens."},{"nl":"De vermindering van de toegelaten snelheid.","fr":"La réduction de la vitesse autorisée."},{"nl":"De wielband is gelost (verschoven/oververhit).","fr":"Le bandage de la roue est lâché (déplacé/surchauffé)."},{"nl":"De wisselstraat","fr":"L’itinéraire"},{"nl":"Definitieve dekking van de hinder","fr":"Couverture définitive de l’obstacle"},{"nl":"Dichtzetten van een sein","fr":"Fermeture d’un signal"},{"nl":"Een gevaarlijke plaats","fr":"Un point dangereux"},{"nl":"Een instorting","fr":"Un effondrement"},{"nl":"Er is geen indringing in het vrijeruimteprofiel.","fr":"Il n’y a pas d’empiètement dans le gabarit."},{"nl":"ETCS-voorval dat een instructie vereist","fr":"Situation ETCS qui nécessite une instruction"},{"nl":"Fluiten (claxonneren)","fr":"Siffler (klaxonner)"},{"nl":"Geen verslag","fr":"Pas de compte rendu"},{"nl":"Gestoord","fr":"Dérangé"},{"nl":"Gevaarlijke goederen","fr":"Matières dangereuses"},{"nl":"Gevarencode","fr":"Code danger"},{"nl":"Gewonden","fr":"Blessés"},{"nl":"Grote beweging normaalspoorregime","fr":"Grand mouvement de régime de voie normale"},{"nl":"Grote beweging tegenspoorregime","fr":"Grand mouvement de régime de contre-voie"},{"nl":"Het draaistel","fr":"Le bogie"},{"nl":"Het gevaar is geweken.","fr":"Le danger est écarté."},{"nl":"Het herstel van de stroom","fr":"Le rétablissement du courant"},{"nl":"Het overstroomde spoor","fr":"La voie inondée"},{"nl":"Het sein is gedoofd","fr":"Le signal est éteint"},{"nl":"Het snijden van de stroom","fr":"La coupure du courant"},{"nl":"Het spoor is versperd.","fr":"La voie est obstruée."},{"nl":"Het spoortoestel","fr":"L’appareil de voie"},{"nl":"Het wiel","fr":"La roue"},{"nl":"Ik ben in nood.","fr":"Je suis en détresse."},{"nl":"Ik heb een groen mobiel sein ontmoet.","fr":"J’ai rencontré un signal mobile vert"},{"nl":"Ik heb een ongeval gehad.","fr":"J’ai eu un accident."},{"nl":"Ik heb geen loslopend vee gezien.","fr":"Je n’ai pas vu de bétail errant."},{"nl":"Ik heb geen rood mobiel sein ontmoet.","fr":"Je n’ai pas rencontré de signal mobile rouge."},{"nl":"Ik heb personen gezien.","fr":"J’ai vu des personnes."},{"nl":"Keper","fr":"Chevron"},{"nl":"Kleine beweging","fr":"Petit mouvement"},{"nl":"Kunt u de bovenleiding controleren?","fr":"Pouvez-vous contrôler la caténaire?"},{"nl":"Levensgevaar","fr":"Danger de mort"},{"nl":"Linkerkant/rechterkant","fr":"Côté gauche/côté droit"},{"nl":"Loslopend vee op het spoorwegdomein","fr":"Bétail errant sur le domaine ferroviaire"},{"nl":"Luchtverlies","fr":"Fuite d’air"},{"nl":"Mag ik terug vertrekken?","fr":"Puis-je repartir?"},{"nl":"Met regimeverandering","fr":"Avec changement de régime"},{"nl":"Niets abnormaal vastgesteld","fr":"Rien constaté d’anormal"},{"nl":"Omleidingsreisweg","fr":"Itinéraire de détournement"},{"nl":"Onvoldoende hoogspanning","fr":"Haute tension insuffisante"},{"nl":"Opheffen","fr":"Supprimer"},{"nl":"Opletten","fr":"Faire attention"},{"nl":"Perronvoorbijrijding","fr":"Dépassement de quai"},{"nl":"Persoonsaanrijding","fr":"Heurt de personne"},{"nl":"Personeelsbeveiliging","fr":"Protection du personnel"},{"nl":"Rangeernummer","fr":"Manœuvre numéro"},{"nl":"Remklemming","fr":"Calage de frein"},{"nl":"Rijden op zicht","fr":"Circuler en marche à vue"},{"nl":"Rijden volgens normaalspoorregime/tegenspoorregime","fr":"Circuler normale/contre-voie"},{"nl":"Rookontwikkeling","fr":"Dégagement de fumée"},{"nl":"Slechte adhesie","fr":"Mauvaise adhérence"},{"nl":"Snelheidsbeperking tot … km/h","fr":"Limitation de vitesse à … km/h"},{"nl":"Snelheidsvermindering tot … km/h","fr":"Réduction de vitesse à … km/h"},{"nl":"Sperren van de beweging","fr":"Blocage du mouvement"},{"nl":"Spoorverandering","fr":"Changement de voie"},{"nl":"Stapvoets","fr":"Au pas d’homme"},{"nl":"Storing/beschadiging aan het konvooi","fr":"Avarie au convoi"},{"nl":"Toegang doodspoor","fr":"Accès à la voie en impasse"},{"nl":"Toegang tot het normaalspoor","fr":"Accès à la voie normale"},{"nl":"Toegang tot het tegenspoor","fr":"Accès à la contre-voie"},{"nl":"Toegelaten (km/h.)","fr":"La vitesse (km /h.)"},{"nl":"Toegang zeer korte sectie","fr":"Accès à une très courte section"},{"nl":"Treinnummer","fr":"Train numéro"},{"nl":"Vak","fr":"Case"},{"nl":"Veiligheid","fr":"Sécurité"},{"nl":"Veld","fr":"Champ"},{"nl":"Verkenning meteo","fr":"Reconnaissance météo"},{"nl":"Wachten op het openen van het sein","fr":"Attendre l’ouverture du signal"},{"nl":"Zonder regimeverandering","fr":"Sans changement de régime"},{"nl":"Rangeerder","fr":"Agent de triage"},{"nl":"Schouwer","fr":"Visiteur"},{"nl":"Lokale installatiebeheerder NMBS","fr":"Gestionnaire local de l’installation SNCB"},{"nl":"NMBS-stationspersoneel","fr":"Personnel de gare SNCB"},{"nl":"Aardingstoestel","fr":"Dispositif de mise à la terre"},{"nl":"Abnormaal geluid","fr":"Bruit anormal"},{"nl":"Abnormale geur","fr":"Odeur anormale"},{"nl":"Abnormale temperatuur","fr":"Température anormale"},{"nl":"Afgezonderd","fr":"Isolé"},{"nl":"Afzonderen","fr":"Isoler"},{"nl":"Automatische waakinrichting","fr":"Veille automatique"},{"nl":"Baanlichten","fr":"Feux de route"},{"nl":"Batterijlading","fr":"Charge batterie"},{"nl":"Beschadiging","fr":"Avarié"},{"nl":"Boordmateriaal","fr":"Outillage de bord"},{"nl":"Boorduitrusting","fr":"Equipement de bord"},{"nl":"Claxon","fr":"Klaxon"},{"nl":"Depanneerder","fr":"Dépanneur"},{"nl":"Dimlichten","fr":"Feux de croisement"},{"nl":"DPRM","fr":"PDMR"},{"nl":"Gebrek aan tractie","fr":"Manque de traction"},{"nl":"Gebrek aan vermogen","fr":"Manque de puissance"},{"nl":"Gebroken","fr":"Cassé"},{"nl":"Geklemd","fr":"Calé"},{"nl":"Gescheurd","fr":"Fissuré"},{"nl":"GF-koppeling","fr":"Attelage GF"},{"nl":"Hakker","fr":"Hacheur"},{"nl":"Henricotkoppeling","fr":"Attelage Henricot"},{"nl":"HS-koppelaar","fr":"Câblot HT"},{"nl":"HS-scheidingsmes","fr":"Sectionneurs HT"},{"nl":"HS-zekering","fr":"Fusible HT"},{"nl":"Kast","fr":"Caisse"},{"nl":"Klapper","fr":"Pétard"},{"nl":"Koplichten","fr":"Feux blancs"},{"nl":"Kortsluitkabel","fr":"Câble de court-circuitage"},{"nl":"Lamp deuren","fr":"Lampe portes"},{"nl":"Leiding","fr":"Conduite"},{"nl":"Leiding automatische rem (LAR)","fr":"Conduite du frein automatique (CFA)"},{"nl":"LS-koppelaar","fr":"Câblot BT"},{"nl":"Magneetrem","fr":"Frein magnétique"},{"nl":"Mobiel sein","fr":"Signal mobile"},{"nl":"Moeilijk te (ont)koppelen","fr":"Difficile à (dés)accoupler"},{"nl":"Moeilijk te bedienen","fr":"Difficile à manœuvrer"},{"nl":"Noodrem","fr":"Frein d’urgence"},{"nl":"Omvormer","fr":"Convertisseur"},{"nl":"Ondichtheid","fr":"Manque d’étanchéité"},{"nl":"Onregelmatigheid RM","fr":"Anomalie MR"},{"nl":"Ontbrekend","fr":"Manquant"},{"nl":"Onvoldoende","fr":"Insuffisant"},{"nl":"Onvoldoende trekkracht","fr":"Effort de traction insuffisant"},{"nl":"Opent niet","fr":"Ne s’ouvre pas"},{"nl":"Ophanging","fr":"Suspension"},{"nl":"Overdreven","fr":"Excessif"},{"nl":"Overeenstemming","fr":"Compatibilité"},{"nl":"Parkeerrem","fr":"Frein de parking"},{"nl":"Platte vlakken","fr":"Méplats"},{"nl":"Registreertoestel","fr":"Appareil enregistreur"},{"nl":"Rem","fr":"Frein"},{"nl":"Remblok","fr":"Bloc de frein"},{"nl":"Remkraan","fr":"Robinet de frein"},{"nl":"Remzool","fr":"Semelle"},{"nl":"Ritkruk","fr":"Inverseur"},{"nl":"Rode lichten","fr":"Feux rouges"},{"nl":"Rookontwikkeling","fr":"Dégagement de fumée"},{"nl":"Ruitenwisser","fr":"Essuie-glace"},{"nl":"Schakelt uit","fr":"Déclenche"},{"nl":"Schroefrem","fr":"Frein à vis"},{"nl":"Sleetgrens","fr":"Limite d’usure"},{"nl":"Sluit niet","fr":"Ne se ferme pas"},{"nl":"Snelheidsmeter","fr":"Indicateur de vitesse"},{"nl":"Staat van de verschillende onderdelen","fr":"Etat des différents équipements"},{"nl":"Standlichten","fr":"Feux de position"},{"nl":"Stoel","fr":"Siège"},{"nl":"Stuurcabine-uitrusting","fr":"Equipement de cabine de conduite"},{"nl":"Toorts","fr":"Torche"},{"nl":"Tractiemotor","fr":"Moteur traction"},{"nl":"Tractie-uitrusting","fr":"Equipement de traction"},{"nl":"Transmissie","fr":"Transmission"},{"nl":"Treinleiding","fr":"La ligne de train"},{"nl":"Venster","fr":"Vitre"},{"nl":"Verdeler","fr":"Répartiteur"},{"nl":"Vergrendelt niet","fr":"Ne se verrouille pas"},{"nl":"Verwarming","fr":"Chauffage"},{"nl":"Voedingsleiding (VL)","fr":"Conduite d’alimentation (CA)"},{"nl":"Watergebrek","fr":"Manque d’eau"},{"nl":"Wielkranssmeerder","fr":"Graisseur boudin"},{"nl":"Zanding","fr":"Sablage"},{"nl":"Afwijkingsreisweg","fr":"Itinéraire de déviation"},{"nl":"Ter hoogte van","fr":"A hauteur de"},{"nl":"Stilstaand","fr":"A l’arrêt"},{"nl":"Vooraan","fr":"A l’avant"},{"nl":"Op tijd","fr":"A l’heure"},{"nl":"Ledig","fr":"A vide"},{"nl":"Neerlaten","fr":"Abaisser"},{"nl":"Afwezig","fr":"Absent"},{"nl":"Toegang","fr":"Accès"},{"nl":"Ongeval","fr":"Accident"},{"nl":"Treinbegeleider","fr":"Accompagnateur"},{"nl":"Koppelen","fr":"Accoupler"},{"nl":"Grondverzakking","fr":"Affaissement de terrain"},{"nl":"Rangeerder","fr":"Agent de triage"},{"nl":"Helpen","fr":"Aider"},{"nl":"Wissel","fr":"Aiguillage"},{"nl":"Autre","fr":"Ander(e)"},{"nl":"Registreertoestel","fr":"Appareil enregistreur"},{"nl":"Alarmoproep","fr":"Appel (d’) alarme"},{"nl":"Oproepen","fr":"Appeler"},{"nl":"GF-koppeling Attelage GF","fr":"Attelage GF"},{"nl":"Henricotkoppeling","fr":"Attelage Henricot"},{"nl":"In het midden","fr":"Au milieu"},{"nl":"Stapvoets","fr":"Au pas d’homme"},{"nl":"Boven / Bovenaan","fr":"Au-dessus"},{"nl":"Automatisch","fr":"Automatique"},{"nl":"Andere onregelmatigheid","fr":"Autre irrégularité"},{"nl":"Beschadiging","fr":"Avarie"},{"nl":"Beschadiging","fr":"Avarié"},{"nl":"Slagboom","fr":"Barrière"},{"nl":"Vertakking","fr":"Bifurcation"},{"nl":"Gewonde","fr":"Blessé"},{"nl":"Gewonden","fr":"Blessés"},{"nl":"Remblok","fr":"Bloc de frein"},{"nl":"Asbus","fr":"Boîte d’essieu"},{"nl":"Hectometerpaal","fr":"Borne hectométrique"},{"nl":"Au-dessus","fr":"Bovenaan"},{"nl":"Abnormaal geluid","fr":"Bruit anormal"},{"nl":"Remmingsbulletin","fr":"Bulletin de freinage"},{"nl":"Buffer","fr":"Butoir"},{"nl":"Kortsluitkabel","fr":"Câble de court circuitage"},{"nl":"LS-koppelaar","fr":"Câblot BT"},{"nl":"HS Koppelaar","fr":"Câblot HT"},{"nl":"Kast","fr":"Caisse"},{"nl":"Remklemming","fr":"Calage de frein"},{"nl":"Geklemd","fr":"Calé"},{"nl":"Gebroken","fr":"Cassé"},{"nl":"Batterijlading","fr":"Charge batterie"},{"nl":"Warm","fr":"Chaud"},{"nl":"Verwarming","fr":"Chauffage"},{"nl":"(Onder)stationschef","fr":"chef de gare (Sous-)"},{"nl":"Keper","fr":"Chevron"},{"nl":"Knipperen","fr":"Clignoter"},{"nl":"Gevarencode","fr":"Code danger"},{"nl":"Overeenstemming","fr":"Compatibilité"},{"nl":"Leiding","fr":"Conduite"},{"nl":"Voedingsleiding (VL)","fr":"Conduite d’alimentation (CA)"},{"nl":"Leiding Automatische Rem","fr":"Conduite du Frein"},{"nl":"Leiding automatische rem (LAR)","fr":"Conduite du frein automatique (CFA)"},{"nl":"Vaststellen","fr":"Constater"},{"nl":"Tegenspoor","fr":"Contre-voie"},{"nl":"Omvormer","fr":"Convertisseur"},{"nl":"Linkerkant","fr":"Côté gauche"},{"nl":"Snijden","fr":"Couper"},{"nl":"De spanning verbreken","fr":"Couper la tension"},{"nl":"Overschrijdingskroon","fr":"Couronne de franchissement"},{"nl":"Kruisen","fr":"Croiser"},{"nl":"Gevaarlijk","fr":"Dangereux"},{"nl":"Schakelt uit","fr":"Déclenche"},{"nl":"Uitschakelen","fr":"Déclencher"},{"nl":"Rookontwikkeling","fr":"Dégagement de fumée"},{"nl":"Beschadigingen","fr":"Dégâts"},{"nl":"Depanneerder","fr":"Dépanneur"},{"nl":"Perronvoorbijrijding","fr":"Dépassement de quai"},{"nl":"Ontspoord","fr":"Déraillé"},{"nl":"Gestoord","fr":"Dérangé"},{"nl":"Laatste","fr":"Dernier"},{"nl":"Laatste rijtuig","fr":"Dernière voiture"},{"nl":"Ontkoppeling","fr":"Désaccouplement"},{"nl":"Gelost","fr":"Desserré"},{"nl":"Lossen (van de remmen)","fr":"Desserrer (les freins)"},{"nl":"beheerd","fr":"Desservi"},{"nl":"Bestemming","fr":"Destination"},{"nl":"Omleiding","fr":"Détournement"},{"nl":"Tweede rijtuig","fr":"Deuxième voiture"},{"nl":"Moeilijk te (ont)koppelen","fr":"Difficile à (dés)accoupler"},{"nl":"Moeilijk te bedienen","fr":"Difficile à manoeuvrer"},{"nl":"Aardingstoestel","fr":"Dispositif de mise à la terre"},{"nl":"Geven","fr":"Donner"},{"nl":"Twijfelachtig","fr":"Douteux"},{"nl":"Rechts","fr":"Droite"},{"nl":"Onvoldoende trekkracht","fr":"Effort de traction insuffisant"},{"nl":"Opwaarts","fr":"En amont"},{"nl":"Opwaarts van","fr":"En amont de"},{"nl":"Achteraan","fr":"En arrière"},{"nl":"Afwaarts","fr":"En aval"},{"nl":"Afwaarts van","fr":"En aval de"},{"nl":"Vooraan","fr":"En avant"},{"nl":"Tijdens de rit","fr":"En cours de route"},{"nl":"In nood","fr":"En détresse"},{"nl":"In volle baan","fr":"En pleine voie"},{"nl":"Achteraan","fr":"En queue"},{"nl":"Vooraan","fr":"En tête"},{"nl":"Nog","fr":"Encore"},{"nl":"Onderaan","fr":"En-dessous"},{"nl":"Beschadigd","fr":"Endommagé"},{"nl":"Plaats","fr":"Endroit"},{"nl":"Boorduitrusting","fr":"Equipement de bord"},{"nl":"Stuurcabine-uitrusting","fr":"Equipement de cabine de conduite"},{"nl":"Tractie-uitrusting","fr":"Equipement de traction"},{"nl":"Fout","fr":"Erreur"},{"nl":"Ruitenwisser","fr":"Essuie-glace"},{"nl":"Staat van de verschillende onderdelen","fr":"Etat des différents équipements"},{"nl":"Gedoofd","fr":"Eteint"},{"nl":"uitzonderlijk","fr":"exceptionnel"},{"nl":"Overdreven","fr":"Excessif"},{"nl":"Opletten","fr":"Faire attention"},{"nl":"Bundel","fr":"Faisceau"},{"nl":"Vuur","fr":"Feu"},{"nl":"Bermbrand","fr":"Feu de talus"},{"nl":"Koplichten","fr":"Feux blancs"},{"nl":"Dimlichten","fr":"Feux de croisement"},{"nl":"Standlichten","fr":"Feux de position"},{"nl":"Koplichten","fr":"Feux de tête"},{"nl":"Rode lichten","fr":"Feux rouges"},{"nl":"Gescheurd","fr":"Fissuré"},{"nl":"Overschrijden","fr":"Franchir"},{"nl":"Rem","fr":"Frein"},{"nl":"Schroefrem","fr":"Frein à vis"},{"nl":"Vaste rem","fr":"Frein calé"},{"nl":"Noodrem","fr":"Frein d’urgence"},{"nl":"Parkeerrem","fr":"Frein de parking"},{"nl":"Magneetrem","fr":"Frein magnétique"},{"nl":"Dienstremming","fr":"Freinage de service"},{"nl":"Luchtlek","fr":"Fuite d’air"},{"nl":"Luchtverlies","fr":"Fuite d’air"},{"nl":"HS-zekering","fr":"Fusible HT"},{"nl":"Eindstation","fr":"Gare terminus"},{"nl":"Links","fr":"Gauche"},{"nl":"Lokale installatiebeheerder NMBS","fr":"Gestionnaire local de l’installation SNCB"},{"nl":"Glad","fr":"Glissant"},{"nl":"Wielkranssmeerder","fr":"Graisseur boudin"},{"nl":"Groot stopsein","fr":"Grand signal d’arrêt"},{"nl":"kraan (Hijs-)","fr":"Grue"},{"nl":"Hakker","fr":"Hacheur"},{"nl":"Persoonsaanrijding","fr":"Heurt de personne"},{"nl":"Buiten dienst","fr":"Hors service"},{"nl":"Het regent","fr":"Il pleut"},{"nl":"Onvoorzien","fr":"Imprévu"},{"nl":"Aanwijzer","fr":"Indicateur"},{"nl":"Snelheidsmeter","fr":"Indicateur de vitesse"},{"nl":"Brandbaar","fr":"Inflammable"},{"nl":"Overstroomd","fr":"Inondé"},{"nl":"Onvoldoende","fr":"Insuffisant"},{"nl":"Verboden","fr":"Interdit"},{"nl":"Schakelaar","fr":"Interrupteur"},{"nl":"Indringer","fr":"Intrus"},{"nl":"Ritkruk","fr":"Inverseur"},{"nl":"Afgezonderd","fr":"Isolé"},{"nl":"Afgezonderd","fr":"Isolé"},{"nl":"Afzonderen","fr":"Isoler"},{"nl":"Wisselstraat/reisweg","fr":"Itinéraire"},{"nl":"Afwijkingsreisweg","fr":"Itinéraire de détournement"},{"nl":"Claxon","fr":"Klaxon"},{"nl":"De adhesie","fr":"L’adhérence"},{"nl":"De rangeerder","fr":"L’agent de triage"},{"nl":"De hulp","fr":"L’aide"},{"nl":"De voeding","fr":"L’alimentation"},{"nl":"De onregelmatigheid","fr":"L’anomalie"},{"nl":"Het spoortoestel","fr":"L’appareil de voie"},{"nl":"De boom","fr":"L’arbre"},{"nl":"De stop","fr":"L’arrêt"},{"nl":"De BTS","fr":"L’ART"},{"nl":"Het seinbeeld","fr":"L’aspect (du signal)"},{"nl":"De koppeling","fr":"L’attelage"},{"nl":"Het motorstel","fr":"L’automotrice"},{"nl":"De instorting","fr":"L’éffondrement"},{"nl":"De trekkracht","fr":"L’effort de traction"},{"nl":"De indringing in het vrijeruimteprofiel.","fr":"L’empiètement dans le gabarit."},{"nl":"Het tussenspoor","fr":"L’entrevoie"},{"nl":"Tussenspoor","fr":"L’entre-voie"},{"nl":"De staat","fr":"L’état"},{"nl":"Het kenmerk","fr":"L’identification"},{"nl":"De brand","fr":"L’incendie / le feu"},{"nl":"De remaanduider","fr":"L’indicateur de frein"},{"nl":"De aanduiding","fr":"L’indication"},{"nl":"De tussenkomst","fr":"L’intervention"},{"nl":"De reisweg","fr":"L’itinéraire"},{"nl":"De omleidingsreisweg","fr":"L’itinéraire de détournement"},{"nl":"De reisweg","fr":"L’itinéraire du train"},{"nl":"Het bevel","fr":"L’ordre"},{"nl":"De laagspanning","fr":"La basse tension"},{"nl":"De bovenleiding is doorgezakt.","fr":"La caténaire est affaissée."},{"nl":"De LAR","fr":"La CFA"},{"nl":"Het verkeer","fr":"La circulation"},{"nl":"De samenstelling","fr":"La composition"},{"nl":"De leiding","fr":"La conduite"},{"nl":"De lijnkennis","fr":"La connaissance de ligne"},{"nl":"De continuïteit","fr":"La continuité"},{"nl":"De afdekking","fr":"La couverture"},{"nl":"De richting","fr":"La direction"},{"nl":"De afstand","fr":"La distance"},{"nl":"De vergunning","fr":"La licence"},{"nl":"Treinleiding","fr":"La ligne de train"},{"nl":"De snelheidsbeperking","fr":"La limitation de vitesse"},{"nl":"De sleetgrens","fr":"La limite d'usure"},{"nl":"De sneeuw","fr":"La neige"},{"nl":"De politie","fr":"La police"},{"nl":"De deur","fr":"La porte"},{"nl":"De beveiliging","fr":"La protection"},{"nl":"Het treinstel","fr":"La rame"},{"nl":"De vermindering","fr":"La réduction"},{"nl":"Het wiel","fr":"La roue"},{"nl":"De bovenleidingsbreuk","fr":"La rupture de la caténaire"},{"nl":"De overlading","fr":"La surcharge"},{"nl":"De noodklep","fr":"La valve d’urgence"},{"nl":"Het slachtoffer","fr":"La victime"},{"nl":"De refertesnelheid","fr":"La vitesse de référence"},{"nl":"De beperkte snelheid","fr":"La vitesse réduite"},{"nl":"Het naastliggend spoor","fr":"La voie adjacente"},{"nl":"Het wijkspoor","fr":"La voie de garage"},{"nl":"Het doodspoor","fr":"La voie en impasse"},{"nl":"Lamp deuren Lampe portes","fr":"Lampe portes"},{"nl":"De remblok","fr":"Le bloc de frein"},{"nl":"Het draaistel","fr":"Le bogie"},{"nl":"De mist","fr":"Le brouillard"},{"nl":"De remklemming","fr":"Le calage de frein"},{"nl":"De lading","fr":"Le chargement"},{"nl":"De verwarming","fr":"Le chauffage"},{"nl":"De keper","fr":"Le chevron"},{"nl":"De koppelaar","fr":"Le coupleur"},{"nl":"De stroom","fr":"Le courant"},{"nl":"Trekhaak","fr":"Le crochet de traction"},{"nl":"De fietser","fr":"Le cycliste"},{"nl":"De schade","fr":"Le dégât"},{"nl":"De schakelaar","fr":"Le disjoncteur"},{"nl":"De bundel","fr":"Le faisceau"},{"nl":"Het formulier","fr":"Le formulaire"},{"nl":"De pakwagen","fr":"Le fourgon"},{"nl":"De schroefrem","fr":"Le frein à vis"},{"nl":"De parkeerrem","fr":"Le frein de parking"},{"nl":"De rechtstreekse rem","fr":"Le frein direct"},{"nl":"Langs","fr":"Le long de"},{"nl":"Langs het spoor","fr":"Le long de la voie"},{"nl":"De rangeerbeweging","fr":"Le mouvement de manoeuvre"},{"nl":"Het lijnnummer","fr":"Le numéro de la ligne"},{"nl":"Het bord","fr":"Le panneau"},{"nl":"De voorruit","fr":"Le pare-brise"},{"nl":"De doorrit","fr":"Le passage"},{"nl":"De klapper","fr":"Le pétard"},{"nl":"Het perron","fr":"Le quai"},{"nl":"De spoorstaaf","fr":"Le rail"},{"nl":"De remkraan","fr":"Le robinet de frein"},{"nl":"De zanding","fr":"Le sablage"},{"nl":"De rijrichting","fr":"Le sens de marche"},{"nl":"De spoorslingering","fr":"Le serpentage de voie"},{"nl":"De dienst","fr":"Le service"},{"nl":"Het noodsein","fr":"Le signal d’alarme"},{"nl":"Het stopsein","fr":"Le signal d’arrêt"},{"nl":"De volgende","fr":"Le suivant"},{"nl":"De wind","fr":"Le vent"},{"nl":"Langzaam","fr":"Lentement"},{"nl":"De richtpunten","fr":"Les points de repère"},{"nl":"De brandweer","fr":"Les pompiers"},{"nl":"De bovenleidingspalen","fr":"Les poteaux de la caténaire"},{"nl":"De hulpdiensten","fr":"Les services de secours"},{"nl":"De hulpdiensten zijn nog aanwezig.","fr":"Les services de secours sont encore présents."},{"nl":"De eindeinen","fr":"Les signaux de queue"},{"nl":"De werken","fr":"Les travaux"},{"nl":"Nevenliggende sporen","fr":"Les voies adjacentes"},{"nl":"De geëlektrificeerde sporen","fr":"Les voies électrifiées"},{"nl":"Sleetgrens","fr":"Limite d’usure"},{"nl":"Opdruklocomotief","fr":"Locomotive d’allège"},{"nl":"Opdruklocomotief (achteraan)","fr":"Locomotive d’allège (en queue)"},{"nl":"Sleeplocomotief","fr":"Locomotive de remorque"},{"nl":"Ontbrekend","fr":"Manquant"},{"nl":"Watergebrek","fr":"Manque d’eau"},{"nl":"Ondichtheid","fr":"Manque d’étanchéité"},{"nl":"Gebrek aan vermogen","fr":"Manque de puissance"},{"nl":"Gebrek aan tractie","fr":"Manque de traction"},{"nl":"Rijden op zicht","fr":"Marche à vue"},{"nl":"Gevaarlijke goederen","fr":"Matières dangereuses"},{"nl":"Slecht","fr":"Mauvais"},{"nl":"Platte vlakken","fr":"Méplats"},{"nl":"Tractiemotor Moteur traction","fr":"Moteur traction"},{"nl":"Beweging nummer …","fr":"Mouvement numéro …"},{"nl":"Opent niet","fr":"Ne s’ouvre pas"},{"nl":"Sluit niet","fr":"Ne se ferme pas"},{"nl":"Vergrendelt niet","fr":"Ne se verrouille pas"},{"nl":"Niet beheerd","fr":"Non desservi"},{"nl":"Bevelnummer…","fr":"Numéro d’ordre…"},{"nl":"Dienstnummer","fr":"Numéro de service"},{"nl":"Versperd","fr":"Obstrué"},{"nl":"Bezet","fr":"Occupé"},{"nl":"Abnormale geur","fr":"Odeur anormale"},{"nl":"Verrichtringen Gedaan","fr":"Operations"},{"nl":"Gewoon","fr":"Ordinaire/normal"},{"nl":"Boordmateriaal","fr":"Outillage de bord"},{"nl":"Snelheidsborden","fr":"Panneaux de vitesse"},{"nl":"DPRM","fr":"PDMR"},{"nl":"NMBS-stationspersoneel","fr":"Personnel de gare SNCB"},{"nl":"Luchtverlies","fr":"Perte d’air"},{"nl":"Klapper","fr":"Pétard"},{"nl":"Kleine beweging","fr":"Petit mouvement"},{"nl":"Klein stopsein","fr":"Petit signal d’arrêt"},{"nl":"Baanlichten","fr":"Phares"},{"nl":"Loods","fr":"Pilote"},{"nl":"Verder","fr":"Plus loin"},{"nl":"Mogelijk","fr":"Possible"},{"nl":"Kunnen","fr":"Pouvoir"},{"nl":"Eerste","fr":"Premier"},{"nl":"Eerste rijtuig","fr":"Première voiture"},{"nl":"Klaarmaking","fr":"Préparation"},{"nl":"Dichtbij/vlakbij","fr":"Près de"},{"nl":"Nabij het spoor","fr":"Près de la voie"},{"nl":"Aanwezig","fr":"Présent"},{"nl":"Gereed","fr":"Prêt"},{"nl":"Klaar voor vertrek","fr":"Prêt pour le départ"},{"nl":"Persoonsbeveiliging","fr":"Protection du personnel"},{"nl":"Voorzichtig","fr":"Prudent"},{"nl":"Spuien","fr":"Purger"},{"nl":"Perron","fr":"Quai"},{"nl":"Verkort perron","fr":"Quai raccourci"},{"nl":"Iets","fr":"Quelque chose"},{"nl":"Vertragen","fr":"Ralentir"},{"nl":"Terugbellen","fr":"Rappeler"},{"nl":"Verslag","fr":"Rapport"},{"nl":"Ontvangen","fr":"Reçu"},{"nl":"Snelheidsbeperking","fr":"Réduction de vitesse"},{"nl":"Aflos","fr":"Relais"},{"nl":"Herstellen","fr":"Réparer"},{"nl":"Verdeler","fr":"Répartiteur"},{"nl":"Aanzetweerstand","fr":"Résistance de démarrage"},{"nl":"Dichtgevallen","fr":"Retombé à l’arrêt"},{"nl":"kraan (Water / lucht)","fr":"Robinet"},{"nl":"Remkraan","fr":"Robinet de frein"},{"nl":"Rijden op zicht","fr":"Rouler en marche à vue"},{"nl":"Koppelingsbreuk","fr":"Rupture d’attelage"},{"nl":"Bovenleidingsbreuk","fr":"Rupture de la caténaire"},{"nl":"Zanding","fr":"Sablage"},{"nl":"Zonder","fr":"Sans"},{"nl":"Zich bevinden","fr":"Se trouver"},{"nl":"HS-scheidingsmes","fr":"Sectionneurs HT"},{"nl":"Veiligheid","fr":"Sécurité"},{"nl":"Remzool","fr":"Semelle"},{"nl":"Hulpdiensten","fr":"Services de secours"},{"nl":"Stoel","fr":"Siège"},{"nl":"Fluiten (claxonneren)","fr":"Siffler (klaxonner)"},{"nl":"Verwittigingssein","fr":"Signal avertisseur"},{"nl":"Stopsein","fr":"Signal d’arrêt"},{"nl":"Beheerd stopsein","fr":"Signal d’arrêt desservi"},{"nl":"Niet-beheerd stopsein","fr":"Signal d’arrêt non-desservi"},{"nl":"Vereenvoudigd stopsein","fr":"Signal d’arrêt simplifié"},{"nl":"Tegenspoorsein","fr":"Signal de contre-voie"},{"nl":"Normaalspoorsein","fr":"Signal de voie normale"},{"nl":"Mobiel sein","fr":"Signal mobile"},{"nl":"Voldoende","fr":"Suffisant"},{"nl":"Afschaffen","fr":"Supprimer"},{"nl":"Ter plaatse","fr":"Sur place"},{"nl":"Oververhit","fr":"Surchauffée"},{"nl":"Ophanging","fr":"Suspension"},{"nl":"Abnormale temperatuur","fr":"Température anormale"},{"nl":"Tijdelijk","fr":"Temporaire"},{"nl":"Beëindigd","fr":"Terminées"},{"nl":"Reizigerstrein","fr":"Train de voyageurs"},{"nl":"Transmissie","fr":"Transmission"},{"nl":"Een miszending","fr":"Un dévoiement"},{"nl":"Een as","fr":"Un essieu"},{"nl":"Zekering","fr":"Un fusible"},{"nl":"Een persoonsaanrijding","fr":"Un heurt de personne"},{"nl":"Een beheerd sein","fr":"Un signal desservi"},{"nl":"Een kast","fr":"Une armoire"},{"nl":"Een warme asbus","fr":"Une boite d’essieu chaude"},{"nl":"Een wiel","fr":"Une roue"},{"nl":"Automatische waakinrichting","fr":"Veille automatique"},{"nl":"Slachtoffer","fr":"Victime"},{"nl":"(Het konvooi) schouwen","fr":"Visiter (le convoi)"},{"nl":"Schouwer","fr":"Visiteur"},{"nl":"Venster","fr":"Vitre"},{"nl":"Spoor A","fr":"Voie A"},{"nl":"Spoor B","fr":"Voie B"},{"nl":"Wijkspoor","fr":"Voie de garage"},{"nl":"Doodspoor","fr":"Voie en impasse"},{"nl":"Normaalspoor","fr":"Voie normale"},{"nl":"Hoofdspoor","fr":"Voie principale"},{"nl":"Nevenliggende sporen","fr":"Voies adjacentes"},{"nl":"Zien","fr":"Voir"},{"nl":"Rijtuig","fr":"Voiture"},{"nl":"Uw voornaam","fr":"Votre prénom"},{"nl":"Toegang naar het tegenspoor.","fr":"Accès à la contre-voie."},{"nl":"Na eliminatie van de overlading","fr":"Après élimination de la surcharge"},{"nl":"Loslopend vee op het spoorwegdomein","fr":"Bétail errant sur le domaine ferroviaire"},{"nl":"Bestuurder, rijdt u nog ?","fr":"Conducteur, circulez-vous encore ?"},{"nl":"Levensgevaar","fr":"Danger de mort"},{"nl":"Moet ik het sein overschrijden ?","fr":"Dois-je franchir le signal ?"},{"nl":"Hier seinhuis…Bereid procedure…voor.","fr":"Ici la cabine…Préparez procédure…"},{"nl":"Hier bestuurder van E7974, ik ben klaar voor vertrek.","fr":"Ici le conducteur de E7974, je suis prêt au départ."},{"nl":"Hier Traffic Control Tafel twaalf","fr":"Ici Traffic Control table douze"},{"nl":"Hij heeft het bericht ontvangen","fr":"Il a reçu le message"},{"nl":"Hij moet op zicht rijden.","fr":"Il doit rouler en marche à vue."},{"nl":"Hij geeft de samenstelling aan zijn aflos","fr":"Il donne la composition à son relais."},{"nl":"Er ontbreekt een formulier.","fr":"Il manque un formulaire."},{"nl":"Er is geen verwarming in het stel.","fr":"Il n’y a pas de chauffage dans la rame."},{"nl":"Hij kijkt onder het motorstel.","fr":"Il regarde sous l’automotrice."},{"nl":"Er is veel sneeuw","fr":"Il y a beaucoup de neige"},{"nl":"Er is veel wind.","fr":"Il y a beaucoup de vent."},{"nl":"Er is levensgevaar bij een bovenleidingsbreuk.","fr":"Il y a danger de mort lors d’une rupture de caténaire."},{"nl":"Er zijn kinderen langs de sporen.","fr":"Il y a des enfants le long des voies."},{"nl":"Er is loslopend vee langs het spoor.","fr":"Il y a du bétail errant le long de la voie."},{"nl":"Er is brand naast de sporen.","fr":"Il y a le feu à côté des voies."},{"nl":"Er is een verzakking van de bovenleiding.","fr":"Il y a un affaissement de la caténaire."},{"nl":"Er ligt een boom over de sporen.","fr":"Il y a un arbre en travers des voies."},{"nl":"Er is een storing aan de overweg","fr":"Il y a un dérangement au passage à niveau"},{"nl":"Er is een hinder in het bereden spoor.","fr":"Il y a un obstacle dans la voie parcourue."},{"nl":"Er is een spoorslingering.","fr":"Il y a un serpentage de voie."},{"nl":"Er is een lek in de voedingsleiding.","fr":"Il y a une fuite dans la conduite d’alimentation."},{"nl":"Er is een open deur achteraan de trein.","fr":"Il y a une porte ouverte à l’arrière du train."},{"nl":"Ik heb een remproef nodig.","fr":"J’ai besoin d’un essai de frein."},{"nl":"Ik heb het dichtzetten van het sein vastgesteld.","fr":"J’ai constaté la fermeture du signal."},{"nl":"Ik heb een trein gekruist ter hoogte van de vertakking.","fr":"J’ai croisé un train à hauteur de la bifurcation."},{"nl":"Ik heb het perron voorbijgereden","fr":"J’ai dépassé le quai"},{"nl":"Ik heb vertraging.","fr":"J’ai du retard."},{"nl":"Ik heb een botsing gehad.","fr":"J’ai eu une collision."},{"nl":"Ik heb een noodremming uitgevoerd.","fr":"J’ai exécuté un freinage d’urgence."},{"nl":"Ik heb te laat geremd.","fr":"J’ai freiné trop tard."},{"nl":"Ik heb iemand aangereden.","fr":"J’ai heurté quelqu’un."},{"nl":"Ik heb een rood mobiel sein ontmoet.","fr":"J’ai rencontré un signal mobile rouge."},{"nl":"Ik heb een abnormale schok gevoeld.","fr":"J’ai ressenti un choc anormal."},{"nl":"Ik heb een vaste rem op het laatste rijtuig.","fr":"J’ai un frein calé sur la dernière voiture."},{"nl":"Ik heb personen langs het spoor gezien.","fr":"J’ai vu des personnes le long de la voie."},{"nl":"Ik heb personen gezien.","fr":"J’ai vu des personnes."},{"nl":"Ik heb loslopend vee gezien.","fr":"J’ai vu du bétail errant."},{"nl":"Ik heb enkele mensen gezien","fr":"J’ai vu quelques personnes"},{"nl":"Ik heb een hinder gezien.","fr":"J’ai vu un obstacle."},{"nl":"Ik roep de boordchef op.","fr":"J’appelle le chef de bord."},{"nl":"Ik kom in station…aan.","fr":"J’arrive en gare de …"},{"nl":"Ik kom aan in het station.","fr":"J’arrive en gare."},{"nl":"Ik wacht op het openen van het sein.","fr":"J’attends l’ouverture du signal."},{"nl":"Ik wacht op de hulpelementen.","fr":"J’attends les éléments de secours."},{"nl":"Ik wacht op mijn aflos.","fr":"J’attends mon relais."},{"nl":"Ik probeer te depanneren.","fr":"J’essaie de dépanner."},{"nl":"Ik heb de persoonsbeveiliging aangevraagd.","fr":"J'ai demandé la protection du personnel."},{"nl":"Ik ben het perron voorbijgereden.","fr":"J'ai dépassé le quai."},{"nl":"Ik heb een abnormaal geluid gehoord aan de rechterkant van mijn konvooi.","fr":"J'ai entendu un bruit anormal du côté droit de mon convoi."},{"nl":"Ik heb een persoonsongeval gehad.","fr":"J'ai eu un accident de personne."},{"nl":"Ik heb een noodremming uitgevoerd.","fr":"J'ai exécuté un freinage d'urgence."},{"nl":"Ik ben vergeten te stoppen in Buda.","fr":"J'ai oublié de m'arrêter à Buda."},{"nl":"Ik vraag het sperren van de bewegingen.","fr":"Je demande le blocage des mouvements"},{"nl":"Ik moet in het tussenspoor gaan","fr":"Je dois aller dans l’entrevoie."},{"nl":"Ik moet onmiddellijk stoppen","fr":"Je dois arrêter immédiatement"},{"nl":"Ik moet wachten op het openen van het sein.","fr":"Je dois attendre l’ouverture du signal."},{"nl":"Ik moet de remmen lossen","fr":"Je dois desserrer les freins"},{"nl":"Ik moet de rem spuien.","fr":"Je dois purger le frein."},{"nl":"Ik moet een formulier E360 invullen.","fr":"Je dois remplir un formulaire E360."},{"nl":"Ik moet in rit op zicht rijden.","fr":"Je dois rouler en marche à vue."},{"nl":"Ik verklaar mij in nood.","fr":"Je me déclare en détresse."},{"nl":"Ik bevind me opwaarts van de brug.","fr":"Je me trouve en amont du pont."},{"nl":"Ik heb u niet telefonisch kunnen bereiken.","fr":"Je n’ai pas pu te joindre par téléphone."},{"nl":"Ik heb geen rood mobiel sein ontmoet","fr":"Je n’ai pas rencontré de signal mobile rouge"},{"nl":"Ik heb geen loslopend vee gezien","fr":"Je n’ai pas vu de bétail errant"},{"nl":"Ik heb niets abnormaals vastgesteld.","fr":"Je n’ai rien constaté d’anormal."},{"nl":"Ik laat de stroomafnemers niet op.","fr":"Je ne lève pas les pantographes."},{"nl":"Ik begrijp u niet","fr":"Je ne vous comprends pas"},{"nl":"Ik mag het sein overschrijden met een EI.1","fr":"Je peux franchir le signal avec un IE.1"},{"nl":"Ik rijd op tegenspoor richting Brussel.","fr":"Je roule à contre-voie vers Bruxelles."},{"nl":"Ik rijd in groot beweging, regime normaalspoor","fr":"Je roule en grand mouvement, régime de voie normale"},{"nl":"Ik rijd tot aan de voet van het volgende grote stopsein.","fr":"Je roule jusqu’au pied du grand signal d’arrêt suivant."},{"nl":"Ik sta stil op een brug tussen…","fr":"Je suis à l’arrêt sur un pont entre…"},{"nl":"Ik ben gestopt aan de vertakking Kontich.","fr":"Je suis arrêté à la bifurcation de Kontich."},{"nl":"Ik ben gestopt aan de vertakking Kontich.","fr":"Je suis arrêté à la bifurcation Kontich."},{"nl":"Ik ben miszonden","fr":"Je suis dévoyé"},{"nl":"Ik ben in nood.","fr":"Je suis en détresse."},{"nl":"De bediende is afwezig.","fr":"L’agent est absent."},{"nl":"De wissel is gestoord","fr":"L’aiguillage est dérangé"},{"nl":"De werkplaats bevindt zich een beetje verder.","fr":"L’atelier se trouve un peu plus loin."},{"nl":"De werkingsproef van de rechtstreekse rem.","fr":"L’essai de fonctionnement du frein direct."},{"nl":"De staat van het spoor is slecht.","fr":"L’état de la voie est mauvais."},{"nl":"Het overschrijdingslicht brandt.","fr":"L’oeilleton de franchissement est allumé."},{"nl":"De slagboom is kapot.","fr":"La barrière est cassée."},{"nl":"De laagspanning is voldoende.","fr":"La basse tension est suffisante."},{"nl":"De bovenleiding is afgerukt","fr":"La caténaire est arrachée"},{"nl":"De bovenleiding slingert abnormaal.","fr":"La caténaire oscille anormalement"},{"nl":"De bovenleiding hangt in het vrijeruimteprofiel.","fr":"La caténaire pend dans le gabarit de la voie."},{"nl":"Het treinverkeer is tijdelijk onderbroken.","fr":"La circulation des trains est temporairement interrompue."},{"nl":"De politie is onderweg naar het ongeval.","fr":"La police est en route vers l’accident."},{"nl":"De luchtproductie is onvoldoende.","fr":"La production d’air est insuffisante."},{"nl":"De pneumatische ophanging is afgezonderd.","fr":"La suspension pneumatique est isolée."},{"nl":"De automatische waakinrichting is afgezonderd","fr":"La veille automatique est isolée"},{"nl":"De toegelaten snelheid bedraagt 40 km/h","fr":"La vitesse autorisée est de 40 km/h"},{"nl":"De snelheid is beperkt","fr":"La vitesse est limitée"},{"nl":"De snelheid is beperkt tot stapvoets rijden.","fr":"La vitesse est limitée au pas d’homme."},{"nl":"Het uitwijkspoor is bezet.","fr":"La voie de garage est occupée"},{"nl":"Het spoor is overstroomd.","fr":"La voie est inondée."},{"nl":"Het spoor is versperd.","fr":"La voie est obstruée."},{"nl":"Het spoor is niet geëlektrificeerd.","fr":"La voie n’est pas électrifiée."},{"nl":"Het normaalspoor is versperd","fr":"La voie normale est obstruée"},{"nl":"Het hoofdspoor is bezet.","fr":"La voie principale est occupée."},{"nl":"Het stuurrijtuig bevindt zich achteraan.","fr":"La voiture pilote se trouve en queue."},{"nl":"De keper brandt.","fr":"Le chevron est allumé."},{"nl":"De keper geeft een verandering van regime aan.","fr":"Le chevron indique un changement de régime."},{"nl":"De treinbestuurder heeft de hinder afgedekt","fr":"Le conducteur a couvert l’obstacle"},{"nl":"De depanneerder herstelt de beschadigingen.","fr":"Le dépanneur répare les dégâts."},{"nl":"Het linkse koplicht is defect.","fr":"Le feu de tête gauche est défectueux."},{"nl":"Het groot stopsein is gedoofd.","fr":"Le grand signal d’arrêt est éteint."},{"nl":"De rangeerder helpt bij de ontkoppeling.","fr":"Le manoeuvre aide au désaccouplement."},{"nl":"De kenmerkplaat van het sein ontbreekt.","fr":"Le panneau d’identification du signal manque."},{"nl":"Het klein stopsein is niet goed zichtbaar.","fr":"Le petit signal d’arrêt n’est pas bien visible."},{"nl":"De overweg is bewaakt.","fr":"Le PN est gardé."},{"nl":"De zanding is verboden in de wissels","fr":"Le sablage est interdit dans les aiguillages"},{"nl":"De zanding werkt niet meer.","fr":"Le sablage ne fonctionne plus."},{"nl":"Het vertreksein is goed zichtbaar","fr":"Le signal de départ est bien visible"},{"nl":"Het sein is defect; het is buiten dienst gezet.","fr":"Le signal est défectueux ; il est mis hors service."},{"nl":"Het sein is gedoofd.","fr":"Le signal est éteint."},{"nl":"Het sein is slecht zichtbaar.","fr":"Le signal est peu visible."},{"nl":"Het sein bevindt zich afwaarts van het perron.","fr":"Le signal se trouve en aval du quai."},{"nl":"De telefoon is gestoord.","fr":"Le téléphone est dérangé."},{"nl":"De trein heeft een vrachtwagen aangereden.","fr":"Le train a heurté un camion."},{"nl":"De trein heeft een stilstaande trein aangereden","fr":"Le train a heurté un train à l’arrêt"},{"nl":"De trein in nood is op het bereden spoor.","fr":"Le train en détresse est sur la voie parcourue."},{"nl":"De schouwer stelt een warme asbus vast .","fr":"Le visiteur constate une boîte d’essieu chaude."},{"nl":"De schouwer voert de volledige remproef uit.","fr":"Le visiteur exécute l’essai de frein complet."},{"nl":"De reiziger stapt uit het motorstel.","fr":"Le voyageur descend de l’automotrice"},{"nl":"De slagbomen van de OW zijn gesloten.","fr":"Les barrières du PN sont fermées."},{"nl":"De slagbomen zijn open.","fr":"Les barrières sont ouvertes."},{"nl":"De koplichten branden.","fr":"Les feux de tête sont allumés."},{"nl":"De nevenliggende sporen zijn niet berijdbaar.","fr":"Les voies adjacentes ne sont pas parcourables."},{"nl":"Mijn snelheid is beperkt.","fr":"Ma vitesse est limitée."},{"nl":"Mijn treinnummer is E4245","fr":"Mon numéro de train est E4245"},{"nl":"De stroomafnemers niet lichten.","fr":"Ne pas lever les pantographes."},{"nl":"Waar staat de locomotief ?","fr":"Où se trouve la locomotive ?"},{"nl":"Spreek langzaam AUB !","fr":"Parlez lentement SVP !"},{"nl":"Kan je verderrijden om de sectie vrij te maken?","fr":"Peux-tu dégager pour libérer la section?"},{"nl":"Mag ik terug vertrekken ?","fr":"Puis-je / est-ce que je peux repartir ?"},{"nl":"Mag ik de normale rit hervatten?","fr":"Puis-je reprendre la marche normale?"},{"nl":"Wanneer is het ongeval gebeurd ?","fr":"Quand s’est passé l’accident ?"},{"nl":"Welk nummer heeft uw krachtvoertuig?","fr":"Quel numéro a votre engin moteur ?"},{"nl":"Werken met mogelijkhe indringing in het vrijeruimteprofiel.","fr":"Travaux avec empiètement possible dans le gabarit de la voie."},{"nl":"Je moet de afdekking ter plaatse verzekeren.","fr":"Tu dois assurer la couverture sur place."},{"nl":"Je rijdt richting Antwerpen","fr":"Tu roules en direction d’Anvers."},{"nl":"Een reiziger heeft het noodsein bewerkt.","fr":"Un voyageur a actionné le signal d’alarme."}];
 const ROUND = 20;
+window.WORDS = WORDS;
 
 // ── LANGUAGE ──
 let lang = 'nl'; // 'nl' = NL user learns FR | 'fr' = FR user learns NL
+window.lang = lang;
 
-const T = {
+const T = window.T = {
   nl: {
     typeLabel:   'Typ de vertaling',
     typeTitle:   'Hoe zeg je dit in het Frans?',
@@ -422,7 +648,7 @@ const T = {
     nextOk:      'Verder →',
     nextWrong:   'Toch verder →',
     roundTitle:  ['Uitstekend!', 'Goed gedaan!', 'Blijf oefenen!'],
-    roundSub:    (pct, c, r) => `${pct}% correct — ${c} van de ${r} vragen goed.`,
+    roundSub:    (pct, c, r) => `${pct}% correct, ${c} van de ${r} vragen goed.`,
     goTitle:     'Geen levens meer',
     goSub:       'Je hebt al je levens verloren. Probeer het opnieuw!',
     retry:       'Opnieuw proberen',
@@ -431,6 +657,33 @@ const T = {
     lblWrong:    'Fouten',
     roundEnd:    'Ronde voltooid!',
     anotherRound:'Nog een ronde ▶',
+    comp: {
+      title:      'Competitiezone',
+      loginSub:   'Voer een bijnaam en een pincode (4-6 cijfers) in om mee te spelen. Onthoud je pincode: daarmee speel je verder op elk toestel onder dezelfde naam. ⚡ Hoe sneller je juist antwoordt, hoe meer bonuspunten je verdient. Reactiesnelheid telt mee voor je eindscore!',
+      nicknamePh: 'Bijnaam',
+      pincodePh:  'Pincode (4-6 cijfers)',
+      startBtn:   'Start ronde',
+      lbTitle:    '🏆 Klassement',
+      tabAll:     'Aller tijden',
+      tabMonth:   'Deze maand',
+      tabWeek:    'Deze week',
+      lbLoading:  'Klassement laden…',
+      lbEmpty:    'Nog niemand heeft gespeeld. Wees de eerste!',
+      errShort:   'Vul een bijnaam (min. 2 tekens) en een pincode van 4-6 cijfers in.',
+      errPin:     'Deze bijnaam is al in gebruik met een andere pincode. Kies een andere bijnaam of vul de juiste pincode in.',
+      errNetwork: 'Er ging iets mis met de verbinding met het klassement. Probeer het opnieuw.',
+      qLabel:     'Competitievraag',
+      correctAnswerLbl: 'Juist antwoord:',
+      speedHint:  '⚡ Snelheid telt mee voor je score',
+      resultTitle:'Ronde voltooid!',
+      resultSub:  (score, total) => `Je scoorde ${score} punten op ${total} vragen.`,
+      scoreLbl:   'Score',
+      bestLbl:    'Beste score',
+      again:      'Nog een ronde ▶',
+      viewLb:     'Bekijk klassement',
+      homeBtn:    'Terug naar menu',
+      you:        '(jij)',
+    },
   },
   fr: {
     typeLabel:   'Tapez la traduction',
@@ -449,7 +702,7 @@ const T = {
     nextOk:      'Continuer →',
     nextWrong:   'Continuer quand même →',
     roundTitle:  ['Excellent !', 'Bien joué !', 'Continuez à pratiquer !'],
-    roundSub:    (pct, c, r) => `${pct}% correct — ${c} sur ${r} bonnes réponses.`,
+    roundSub:    (pct, c, r) => `${pct}% correct, ${c} sur ${r} bonnes réponses.`,
     goTitle:     'Plus de vies !',
     goSub:       'Vous avez perdu toutes vos vies. Réessayez !',
     retry:       'Réessayer',
@@ -458,17 +711,46 @@ const T = {
     lblWrong:    'Erreurs',
     roundEnd:    'Tour terminé !',
     anotherRound:'Encore un tour ▶',
+    comp: {
+      title:      'Zone de compétition',
+      loginSub:   'Entrez un pseudo et un code PIN (4-6 chiffres) pour participer. Retenez votre code PIN : il vous permet de continuer sous le même nom sur n\u2019importe quel appareil. ⚡ Plus vous répondez vite et juste, plus vous gagnez de points bonus. La rapidité compte pour votre score final !',
+      nicknamePh: 'Pseudo',
+      pincodePh:  'Code PIN (4-6 chiffres)',
+      startBtn:   'Démarrer le tour',
+      lbTitle:    '🏆 Classement',
+      tabAll:     'Depuis toujours',
+      tabMonth:   'Ce mois-ci',
+      tabWeek:    'Cette semaine',
+      lbLoading:  'Chargement du classement…',
+      lbEmpty:    'Personne n\u2019a encore joué. Soyez le premier !',
+      errShort:   'Entrez un pseudo (min. 2 caractères) et un code PIN de 4 à 6 chiffres.',
+      errPin:     'Ce pseudo est déjà utilisé avec un autre code PIN. Choisissez un autre pseudo ou entrez le bon code PIN.',
+      errNetwork: 'Un problème de connexion avec le classement est survenu. Réessayez.',
+      qLabel:     'Question de compétition',
+      correctAnswerLbl: 'Bonne réponse :',
+      speedHint:  '⚡ La rapidité compte pour votre score',
+      resultTitle:'Tour terminé !',
+      resultSub:  (score, total) => `Vous avez marqué ${score} points sur ${total} questions.`,
+      scoreLbl:   'Score',
+      bestLbl:    'Meilleur score',
+      again:      'Encore un tour ▶',
+      viewLb:     'Voir le classement',
+      homeBtn:    'Retour au menu',
+      you:        '(vous)',
+    },
   }
 };
 
 function setLang(l) {
   lang = l;
+  window.lang = l;
   document.getElementById('btn-lang-nl').classList.toggle('active', l === 'nl');
   document.getElementById('btn-lang-fr').classList.toggle('active', l === 'fr');
   document.getElementById('home-nl').style.display = l === 'nl' ? '-webkit-box' : 'none';
   document.getElementById('home-nl').style.display = l === 'nl' ? 'flex' : 'none';
   document.getElementById('home-fr').style.display = l === 'fr' ? '-webkit-box' : 'none';
   document.getElementById('home-fr').style.display = l === 'fr' ? 'flex' : 'none';
+  if (typeof window.applyCompLang === 'function') window.applyCompLang();
 }
 
 // ── GAME STATE ──
@@ -486,11 +768,19 @@ function shuffle(a) {
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+  // Vangnet: het vaste "Controleer"-balkje van de competitiequiz hoort alleen
+  // zichtbaar te zijn tijdens de quiz zelf, bij elke andere schermwissel verbergen.
+  if (id !== 'comp-quiz') {
+    const cqBtn = document.getElementById('cq-bottom-btn');
+    if (cqBtn) cqBtn.style.display = 'none';
+  }
 }
 
 function goHome() {
   hideFeedback();
   document.getElementById('bottom-btn').style.display = 'none';
+  const cqBtn = document.getElementById('cq-bottom-btn');
+  if (cqBtn) cqBtn.style.display = 'none';
   showScreen('home');
 }
 
@@ -784,6 +1074,535 @@ function showGameOver() {
 
 // Init
 setLang('nl');
+</script>
+
+<!-- ══ COMPETITION ZONE - Firebase ══ -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+  getFirestore, doc, getDoc, setDoc, runTransaction,
+  collection, query, orderBy, limit, getDocs, startAt, endAt, serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+// ─────────────────────────────────────────────────────────────
+// STAP 1: vul hier de config van je eigen (gratis) Firebase-project in.
+// Zie de uitleg die je apart hebt gekregen voor hoe je dit aanmaakt.
+// ─────────────────────────────────────────────────────────────
+const firebaseConfig = {
+  apiKey: "AIzaSyCtrmzg2dxQt0BhPScRq2vzApFJS0lVhko",
+  authDomain: "raillingo-competitie.firebaseapp.com",
+  projectId: "raillingo-competitie",
+  storageBucket: "raillingo-competitie.firebasestorage.app",
+  messagingSenderId: "934986789899",
+  appId: "1:934986789899:web:a69ba6c9ab1fd2c30a030e"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const LB_COLLECTION = 'raillingo_leaderboard';
+const LB_WEEKLY = 'raillingo_weekly';
+const LB_MONTHLY = 'raillingo_monthly';
+const COMP_ROUND = 15;
+
+let compNickname = null, compNicknameId = null, compPinHash = null;
+let compQueue = [], compIdx = 0, compScore = 0, compAnswered = false, compQuestionStart = 0;
+let activeLbPeriod = 'alltime';
+let cqMode = 'mcq', cqShowField = 'nl', cqPickField = 'fr', cqBankTiles = [], cqBankPlaced = [];
+let cqModeQueue = [];
+
+// Bouwt een evenwichtige, willekeurig geschudde volgorde van modi (bv. bij 15 vragen:
+// exact 5x meerkeuze, 5x woordenbank, 5x typen) zodat niemand toevallig meer of minder
+// tijdrovende typvragen krijgt dan een ander, dat zou oneerlijk zijn t.o.v. de tijdsbonus.
+function buildModeQueue(total) {
+  const kinds = ['mcq', 'bank', 'type'];
+  const perKind = Math.floor(total / kinds.length);
+  const remainder = total - perKind * kinds.length;
+  const modes = [];
+  kinds.forEach((k, i) => {
+    const count = perKind + (i < remainder ? 1 : 0);
+    for (let n = 0; n < count; n++) modes.push(k);
+  });
+  return window.shuffle(modes);
+}
+
+// ISO-weeknummer, bv. "2026-W28"
+function getWeekKey(d = new Date()) {
+  const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+  const dayNum = (date.getUTCDay() + 6) % 7;
+  date.setUTCDate(date.getUTCDate() - dayNum + 3);
+  const firstThursday = new Date(Date.UTC(date.getUTCFullYear(), 0, 4));
+  const week = 1 + Math.round(((date - firstThursday) / 86400000 - 3 + ((firstThursday.getUTCDay() + 6) % 7)) / 7);
+  return `${date.getUTCFullYear()}-W${String(week).padStart(2, '0')}`;
+}
+// Kalendermaand, bv. "2026-07"
+function getMonthKey(d = new Date()) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+}
+
+async function sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function escapeHtml(s) {
+  return s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+// Bewerkingsafstand tussen twee tekenreeksen (Levenshtein), voor tolerantie op tik-/spelfouten.
+function levenshtein(a, b) {
+  const m = a.length, n = b.length;
+  if (m === 0) return n;
+  if (n === 0) return m;
+  const dp = new Array(n + 1);
+  for (let j = 0; j <= n; j++) dp[j] = j;
+  for (let i = 1; i <= m; i++) {
+    let prev = dp[0];
+    dp[0] = i;
+    for (let j = 1; j <= n; j++) {
+      const temp = dp[j];
+      dp[j] = a[i - 1] === b[j - 1] ? prev : 1 + Math.min(prev, dp[j], dp[j - 1]);
+      prev = temp;
+    }
+  }
+  return dp[n];
+}
+
+// Hoeveel afwijking is nog toegestaan, afhankelijk van de lengte van het juiste antwoord.
+function typoTolerance(len) {
+  if (len <= 3) return 0;
+  if (len <= 7) return 1;
+  return 2;
+}
+
+function isCloseEnough(userText, correctText) {
+  const a = window.norm(userText), b = window.norm(correctText);
+  if (a === b) return true;
+  if (!a) return false;
+  return levenshtein(a, b) <= typoTolerance(b.length);
+}
+
+function ct() { return window.T[window.lang].comp; }
+
+window.applyCompLang = function applyCompLang() {
+  const t = ct();
+  document.getElementById('comp-title').textContent = t.title;
+  document.getElementById('comp-login-sub').textContent = t.loginSub;
+  document.getElementById('comp-nickname').placeholder = t.nicknamePh;
+  document.getElementById('comp-pincode').placeholder = t.pincodePh;
+  document.getElementById('comp-start-btn').textContent = t.startBtn;
+  document.getElementById('comp-lb-title').textContent = t.lbTitle;
+  document.getElementById('comp-tab-all').textContent = t.tabAll;
+  document.getElementById('comp-tab-month').textContent = t.tabMonth;
+  document.getElementById('comp-tab-week').textContent = t.tabWeek;
+  document.getElementById('cr-btn-again').textContent = t.again;
+  document.getElementById('cr-btn-lb').textContent = t.viewLb;
+  document.getElementById('cr-btn-home').textContent = t.homeBtn;
+  document.getElementById('cr-score-lbl').textContent = t.scoreLbl;
+  document.getElementById('cr-best-lbl').textContent = t.bestLbl;
+  document.getElementById('cq-speed-hint').textContent = t.speedHint;
+};
+
+function resetLbTab() {
+  activeLbPeriod = 'alltime';
+  document.querySelectorAll('.comp-lb-tab').forEach(b => b.classList.toggle('active', b.dataset.period === 'alltime'));
+}
+
+window.goCompetition = function goCompetition() {
+  window.showScreen('comp-home');
+  window.applyCompLang();
+  document.getElementById('comp-error').textContent = '';
+  const savedNick = localStorage.getItem('raillingo_comp_nickname');
+  const nickField = document.getElementById('comp-nickname');
+  if (savedNick && !nickField.value) nickField.value = savedNick;
+  resetLbTab();
+  loadLeaderboard();
+};
+
+window.compSwitchPeriod = function compSwitchPeriod(period) {
+  activeLbPeriod = period;
+  document.querySelectorAll('.comp-lb-tab').forEach(b => b.classList.toggle('active', b.dataset.period === period));
+  loadLeaderboard();
+};
+
+async function loadLeaderboard() {
+  const listEl = document.getElementById('comp-lb-list');
+  const t = ct();
+  listEl.innerHTML = `<div class="comp-lb-loading">${t.lbLoading}</div>`;
+  try {
+    let allRows;
+    if (activeLbPeriod === 'alltime') {
+      // Hogere limiet dan de 20 die getoond worden, zodat we ook de eigen rang kunnen berekenen.
+      const qy = query(collection(db, LB_COLLECTION), orderBy('bestScore', 'desc'), limit(500));
+      const snap = await getDocs(qy);
+      allRows = snap.docs.map(d => ({ id: d.id, you: d.id === compNicknameId, ...d.data() }));
+    } else {
+      const periodKey = activeLbPeriod === 'week' ? getWeekKey() : getMonthKey();
+      const colName = activeLbPeriod === 'week' ? LB_WEEKLY : LB_MONTHLY;
+      const prefix = periodKey + '__';
+      // Bereik-query op document-ID (geen samengestelde index nodig); score wordt client-side gesorteerd.
+      const qy = query(collection(db, colName), orderBy('__name__'), startAt(prefix), endAt(prefix + '\uf8ff'));
+      const snap = await getDocs(qy);
+      allRows = snap.docs
+        .map(d => ({ id: d.id, you: d.id === prefix + compNicknameId, ...d.data() }))
+        .sort((a, b) => (b.bestScore || 0) - (a.bestScore || 0));
+    }
+    renderLeaderboard(allRows, t);
+  } catch (e) {
+    console.error(e);
+    listEl.innerHTML = `<div class="comp-lb-loading">${t.errNetwork}</div>`;
+  }
+}
+
+function appendLbRow(listEl, d, rank, t) {
+  const medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : ('#' + rank);
+  const row = document.createElement('div');
+  row.className = 'comp-lb-row' + (d.you ? ' comp-lb-you' : '');
+  row.innerHTML = `<span class="comp-lb-rank">${medal}</span>`
+    + `<span class="comp-lb-name">${escapeHtml(d.nickname || '')}${d.you ? ' ' + t.you : ''}</span>`
+    + `<span class="comp-lb-score">${(d.bestScore || 0).toFixed(1)}</span>`;
+  listEl.appendChild(row);
+}
+
+function renderLeaderboard(allRows, t) {
+  const listEl = document.getElementById('comp-lb-list');
+  if (!allRows.length) { listEl.innerHTML = `<div class="comp-lb-loading">${t.lbEmpty}</div>`; return; }
+  listEl.innerHTML = '';
+
+  const top = allRows.slice(0, 20);
+  top.forEach((d, i) => appendLbRow(listEl, d, i + 1, t));
+
+  // Eigen positie apart tonen als je bent ingelogd, meespeelt in deze periode, maar niet in de top 20 staat.
+  if (compNicknameId) {
+    const myIndex = allRows.findIndex(r => r.you);
+    if (myIndex >= 20) {
+      const sep = document.createElement('div');
+      sep.className = 'comp-lb-sep';
+      sep.textContent = '···';
+      listEl.appendChild(sep);
+      appendLbRow(listEl, allRows[myIndex], myIndex + 1, t);
+    }
+  }
+}
+
+window.compStart = async function compStart() {
+  const nickInput = document.getElementById('comp-nickname');
+  const pinInput = document.getElementById('comp-pincode');
+  const errEl = document.getElementById('comp-error');
+  const btn = document.getElementById('comp-start-btn');
+  const t = ct();
+  errEl.textContent = '';
+
+  const nickname = nickInput.value.trim();
+  const pincode = pinInput.value.trim();
+
+  if (nickname.length < 2 || nickname.length > 20 || !/^[0-9]{4,6}$/.test(pincode)) {
+    errEl.textContent = t.errShort;
+    return;
+  }
+  const nicknameId = nickname.toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 24);
+  if (!nicknameId) { errEl.textContent = t.errShort; return; }
+
+  btn.disabled = true;
+  const originalLabel = btn.textContent;
+  btn.textContent = '…';
+
+  try {
+    const pinHash = await sha256(nicknameId + ':' + pincode);
+    const ref = doc(db, LB_COLLECTION, nicknameId);
+    const snap = await getDoc(ref);
+    if (snap.exists()) {
+      if (snap.data().pinHash !== pinHash) {
+        errEl.textContent = t.errPin;
+        btn.disabled = false; btn.textContent = originalLabel;
+        return;
+      }
+    } else {
+      await setDoc(ref, { nickname, pinHash, bestScore: 0, gamesPlayed: 0, updatedAt: serverTimestamp() });
+    }
+    compNickname = nickname; compNicknameId = nicknameId; compPinHash = pinHash;
+    localStorage.setItem('raillingo_comp_nickname', nickname);
+    compStartQuiz();
+  } catch (e) {
+    console.error(e);
+    errEl.textContent = t.errNetwork;
+  }
+  btn.disabled = false; btn.textContent = originalLabel;
+};
+
+function compStartQuiz() {
+  compScore = 0; compIdx = 0;
+  compQueue = window.shuffle(window.WORDS).slice(0, COMP_ROUND);
+  cqModeQueue = buildModeQueue(COMP_ROUND);
+  window.showScreen('comp-quiz');
+  compLoadQ();
+}
+
+function compLoadQ() {
+  compAnswered = false;
+  const q = compQueue[compIdx];
+  const t = ct();
+  const mainT = window.T[window.lang];
+
+  document.getElementById('cq-prog-bar').style.width = (compIdx / COMP_ROUND * 100) + '%';
+  document.getElementById('cq-score-display').textContent = '⭐ ' + compScore.toFixed(1);
+  document.getElementById('cq-mcq-wrap').style.display = 'none';
+  document.getElementById('cq-type-wrap').style.display = 'none';
+  document.getElementById('cq-bank-wrap').style.display = 'none';
+
+  const bb = document.getElementById('cq-bottom-btn');
+  bb.style.display = 'none';
+  document.getElementById('cq-correct-feedback').style.display = 'none';
+  const checkBtn = document.getElementById('cq-btn-check');
+  checkBtn.classList.remove('ready');
+  checkBtn.textContent = mainT.check;
+
+  const modes = ['mcq', 'type', 'bank'];
+  cqMode = cqModeQueue[compIdx] || modes[Math.floor(Math.random() * modes.length)];
+
+  const counter = (compIdx + 1) + '/' + COMP_ROUND;
+
+  if (cqMode === 'mcq') {
+    // Meerkeuze: richting mag per vraag wisselen, met bijpassend label.
+    const showFr = Math.random() < 0.5;
+    cqShowField = showFr ? 'fr' : 'nl';
+    cqPickField = showFr ? 'nl' : 'fr';
+
+    document.getElementById('cq-type-label').textContent = (showFr ? mainT.mcqLabelRev : mainT.mcqLabel) + ' · ' + counter;
+    document.getElementById('cq-title').textContent = showFr ? mainT.mcqTitleRev : mainT.mcqTitle;
+    document.getElementById('cq-word').textContent = q[cqShowField];
+
+    const distractors = window.shuffle(window.WORDS.filter(w => w !== q)).slice(0, 3);
+    const opts = window.shuffle([q, ...distractors]);
+    const container = document.getElementById('cq-options');
+    container.innerHTML = '';
+    opts.forEach(o => {
+      const b = document.createElement('button');
+      b.className = 'opt';
+      b.textContent = o[cqPickField];
+      b.dataset.ok = (o === q) ? '1' : '0';
+      b.addEventListener('click', () => cqPickMCQ(b));
+      container.appendChild(b);
+    });
+    document.getElementById('cq-mcq-wrap').style.display = 'block';
+
+  } else if (cqMode === 'type') {
+    // Typen: vaste richting volgens de gekozen UI-taal, zoals in de hoofdmodule.
+    cqShowField = window.lang === 'nl' ? 'nl' : 'fr';
+    cqPickField = window.lang === 'nl' ? 'fr' : 'nl';
+
+    document.getElementById('cq-type-label').textContent = mainT.typeLabel + ' · ' + counter;
+    document.getElementById('cq-title').textContent = mainT.typeTitle;
+    document.getElementById('cq-word').textContent = q[cqShowField];
+    const inp = document.getElementById('cq-type-input');
+    inp.value = ''; inp.className = ''; inp.disabled = false;
+    inp.placeholder = mainT.typePlaceholder;
+    document.getElementById('cq-type-wrap').style.display = 'block';
+    bb.style.display = 'flex';
+    setTimeout(() => inp.focus(), 80);
+
+  } else {
+    // Woordenbank: vaste richting volgens de gekozen UI-taal, zoals in de hoofdmodule.
+    cqShowField = window.lang === 'nl' ? 'nl' : 'fr';
+    cqPickField = window.lang === 'nl' ? 'fr' : 'nl';
+
+    document.getElementById('cq-type-label').textContent = mainT.bankLabel + ' · ' + counter;
+    document.getElementById('cq-title').textContent = mainT.bankTitle;
+    document.getElementById('cq-word').textContent = q[cqShowField];
+
+    const tokens = q[cqPickField].split(/\s+/);
+    const extras = window.shuffle(window.WORDS.filter(w => w !== q)).slice(0, 3)
+      .flatMap(w => w[cqPickField].split(/\s+/)).slice(0, Math.min(tokens.length, 4));
+    cqBankTiles = window.shuffle([
+      ...tokens.map((tk, i) => ({ id: 'c' + i, text: tk })),
+      ...extras.map((tk, i) => ({ id: 'd' + i, text: tk }))
+    ]);
+    cqBankPlaced = [];
+    cqRenderBank();
+    document.getElementById('cq-bank-wrap').style.display = 'block';
+    bb.style.display = 'flex';
+  }
+
+  compQuestionStart = Date.now();
+}
+
+// Doorlopende snelheidsbonus: hoe sneller geantwoord, hoe hoger de bonus, geleidelijk
+// aflopend i.p.v. in vaste sprongen, om toevallig gelijke eindscores te vermijden.
+function speedBonus(elapsedMs) {
+  const maxBonus = 5;     // bonus bij (bijna) onmiddellijk antwoord
+  const windowMs = 8000;  // bonus daalt geleidelijk tot 0 over 8 seconden
+  const raw = maxBonus * (1 - elapsedMs / windowMs);
+  return Math.max(0, Math.round(raw * 10) / 10); // 1 decimaal precies
+}
+
+function cqAward(ok, basePoints) {
+  if (ok) {
+    const elapsed = Date.now() - compQuestionStart;
+    const bonus = speedBonus(elapsed);
+    compScore = Math.round((compScore + basePoints + bonus) * 10) / 10;
+  }
+  document.getElementById('cq-score-display').textContent = '⭐ ' + compScore.toFixed(1);
+}
+
+function cqPickMCQ(btn) {
+  if (compAnswered) return;
+  compAnswered = true;
+  const ok = btn.dataset.ok === '1';
+  document.querySelectorAll('#cq-options .opt').forEach(b => {
+    b.disabled = true;
+    if (b.dataset.ok === '1') b.classList.add('show-correct');
+  });
+  btn.classList.add(ok ? 'correct' : 'wrong');
+  cqAward(ok, 10);
+  setTimeout(compNextQ, 700);
+}
+
+window.cqOnTypeInput = function cqOnTypeInput() {
+  const ok = document.getElementById('cq-type-input').value.trim().length > 0;
+  document.getElementById('cq-btn-check').classList.toggle('ready', ok);
+};
+
+window.cqOnTypeKey = function cqOnTypeKey(e) {
+  if (e.key === 'Enter' && !compAnswered) {
+    if (document.getElementById('cq-btn-check').classList.contains('ready')) cqCheckAnswer();
+  }
+};
+
+function cqRenderBank() {
+  const aa = document.getElementById('cq-answer-area');
+  const wb = document.getElementById('cq-word-bank');
+  aa.innerHTML = ''; wb.innerHTML = '';
+  cqBankPlaced.forEach((tile, i) => {
+    const el = document.createElement('div');
+    el.className = 'tile placed';
+    el.textContent = tile.text;
+    el.addEventListener('click', () => { if (!compAnswered) { cqBankPlaced.splice(i, 1); cqRenderBank(); } });
+    aa.appendChild(el);
+  });
+  cqBankTiles.forEach(tile => {
+    const el = document.createElement('div');
+    const isPlaced = cqBankPlaced.some(p => p.id === tile.id);
+    el.className = 'tile' + (isPlaced ? ' used' : '');
+    el.textContent = tile.text;
+    el.addEventListener('click', () => { if (compAnswered || isPlaced) return; cqBankPlaced.push(tile); cqRenderBank(); });
+    wb.appendChild(el);
+  });
+  document.getElementById('cq-btn-check').classList.toggle('ready', cqBankPlaced.length > 0);
+}
+
+window.cqCheckAnswer = function cqCheckAnswer() {
+  if (compAnswered) return;
+  compAnswered = true;
+  const q = compQueue[compIdx];
+  const t = ct();
+  let ok = false;
+
+  if (cqMode === 'type') {
+    const inp = document.getElementById('cq-type-input');
+    inp.disabled = true;
+    ok = isCloseEnough(inp.value, q[cqPickField]);
+    inp.classList.add(ok ? 'correct' : 'wrong');
+    cqAward(ok, 15);
+    if (!ok) cqShowCorrect(q[cqPickField], t);
+  } else if (cqMode === 'bank') {
+    const userAns = cqBankPlaced.map(tl => tl.text).join(' ');
+    ok = window.norm(userAns) === window.norm(q[cqPickField]);
+    document.querySelectorAll('#cq-word-bank .tile, #cq-answer-area .tile').forEach(tl => tl.style.pointerEvents = 'none');
+    cqAward(ok, 12);
+    if (!ok) cqShowCorrect(q[cqPickField], t);
+  }
+
+  document.getElementById('cq-btn-check').classList.remove('ready');
+  document.getElementById('cq-btn-check').style.pointerEvents = 'none';
+  const delay = ok ? 900 : 2200; // bij een fout iets langer, zodat het juiste antwoord leesbaar is
+  setTimeout(() => {
+    document.getElementById('cq-btn-check').style.pointerEvents = '';
+    document.getElementById('cq-correct-feedback').style.display = 'none';
+    compNextQ();
+  }, delay);
+};
+
+function cqShowCorrect(correctText, t) {
+  const fb = document.getElementById('cq-correct-feedback');
+  fb.innerHTML = t.correctAnswerLbl + ' <b>' + escapeHtml(correctText) + '</b>';
+  fb.style.display = 'block';
+}
+
+function compNextQ() {
+  compIdx++;
+  if (compIdx >= COMP_ROUND) { compFinish(); return; }
+  compLoadQ();
+}
+
+async function compFinish() {
+  document.getElementById('cq-prog-bar').style.width = '100%';
+  document.getElementById('cq-bottom-btn').style.display = 'none';
+  const t = ct();
+  const weekKey = getWeekKey();
+  const monthKey = getMonthKey();
+  let bestScore = compScore;
+  try {
+    bestScore = await runTransaction(db, async (tx) => {
+      const allRef = doc(db, LB_COLLECTION, compNicknameId);
+      const weekRef = doc(db, LB_WEEKLY, weekKey + '__' + compNicknameId);
+      const monthRef = doc(db, LB_MONTHLY, monthKey + '__' + compNicknameId);
+
+      const [allSnap, weekSnap, monthSnap] = await Promise.all([tx.get(allRef), tx.get(weekRef), tx.get(monthRef)]);
+
+      const allCur = allSnap.exists() ? allSnap.data() : { bestScore: 0, gamesPlayed: 0 };
+      const weekCur = weekSnap.exists() ? weekSnap.data() : { bestScore: 0, gamesPlayed: 0 };
+      const monthCur = monthSnap.exists() ? monthSnap.data() : { bestScore: 0, gamesPlayed: 0 };
+
+      const newAllBest = Math.max(allCur.bestScore || 0, compScore);
+      const newWeekBest = Math.max(weekCur.bestScore || 0, compScore);
+      const newMonthBest = Math.max(monthCur.bestScore || 0, compScore);
+
+      tx.set(allRef, {
+        nickname: compNickname, pinHash: compPinHash,
+        bestScore: newAllBest, gamesPlayed: (allCur.gamesPlayed || 0) + 1,
+        updatedAt: serverTimestamp()
+      });
+      tx.set(weekRef, {
+        nickname: compNickname, pinHash: compPinHash, periodKey: weekKey,
+        bestScore: newWeekBest, gamesPlayed: (weekCur.gamesPlayed || 0) + 1,
+        updatedAt: serverTimestamp()
+      });
+      tx.set(monthRef, {
+        nickname: compNickname, pinHash: compPinHash, periodKey: monthKey,
+        bestScore: newMonthBest, gamesPlayed: (monthCur.gamesPlayed || 0) + 1,
+        updatedAt: serverTimestamp()
+      });
+
+      return newAllBest;
+    });
+  } catch (e) { console.error(e); }
+
+  document.getElementById('cr-title').textContent = t.resultTitle;
+  document.getElementById('cr-sub').textContent = t.resultSub(compScore.toFixed(1), COMP_ROUND);
+  document.getElementById('cr-score').textContent = compScore.toFixed(1);
+  document.getElementById('cr-best').textContent = bestScore.toFixed(1);
+  window.applyCompLang();
+  window.showScreen('comp-result');
+}
+
+window.compExit = function compExit() {
+  document.getElementById('cq-bottom-btn').style.display = 'none';
+  window.showScreen('comp-home');
+  window.applyCompLang();
+  resetLbTab();
+  loadLeaderboard();
+};
+
+window.compPlayAgain = function compPlayAgain() {
+  if (!compNicknameId) { window.goCompetition(); return; }
+  compStartQuiz();
+};
+
+window.compShowLeaderboard = function compShowLeaderboard() {
+  window.showScreen('comp-home');
+  window.applyCompLang();
+  resetLbTab();
+  loadLeaderboard();
+};
 </script>
 </body>
 </html>
